@@ -66,11 +66,15 @@ app.post(
 
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
-  
-  if (userFound) {
+  const password_found = await User.findOne({password: req.body.password}); 
+  const repassword_found = await User.findOne({password: req.body.repassword}); 
+   if (userFound) {
     req.flash("error", "User with that email already exists");
     res.redirect("/register");
-  } else {
+  } else if(password_found == null || password_found != repassword_found){
+    req.flash("error", "pass is invalid");
+    res.redirect("/register");
+  }else{
     try {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const user = new User({
