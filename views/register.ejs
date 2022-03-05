@@ -72,13 +72,14 @@ body {
         <p><%= messages.error %></p>
         <% } %>
       <form action="/register" method="POST">
-        <input type="name" name="name" placeholder="My Name" />
+        <input type="name" name="name" placeholder="Ten dang nhap" />
         <input
           type="email"
           name="email"
-          placeholder="johnnythedesigner@gmail.com"
+          placeholder="example@gmail.com"
         />
-        <input type="password" name="password" placeholder="* * * * * *" />
+        <input type="password" name="password" placeholder="Nhap mat khau o day" />
+        <input type="password" name="repassword" placeholder="Nhap lai mat khau" />
         <button>SIGN UP</button>
       </form>
     </div>

@@ -66,7 +66,7 @@ app.post(
 
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
-
+  
   if (userFound) {
     req.flash("error", "User with that email already exists");
     res.redirect("/register");
