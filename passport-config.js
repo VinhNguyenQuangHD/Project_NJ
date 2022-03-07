@@ -1,8 +1,10 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 
+//Xac thuc dang nhap, call back xem co dung voi yeu cau hay khong
 function initialize(passport, getUserByEmail, getUserById) {
   const authenticateUser = async (email, password, done) => {
+    //Xac thuc dang nhap qua email
     const user = await getUserByEmail(email);
     if (user == null) {
       return done(null, false, { message: "No user with that email" });

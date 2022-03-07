@@ -31,11 +31,13 @@ initializePassport(
   }
 );
 
+//Xac dinh view qua form
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(body_parser.urlencoded({ extended: true }));
 app.use(flash());
 app.use(
+  //Luu phien dang nhap tai mot cong nhat dinh nao do
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -47,6 +49,7 @@ app.use(passport.session());
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 app.use('/register', user_routes);
+app.use('/', require('../Project_NJ/routes/crud_router'));
 
 app.get("/", checkAuthenticated, (req, res) => {
   res.render("index", { name: req.user.name });
@@ -60,17 +63,12 @@ app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login");
 });
 
-app.get("/adminpage", checkAuthenticated, (req, res) => {
-  res.render("admin");
-});
 
-app.get("/adminpage/create", checkAuthenticated, (req, res) => {
-  res.render("create");
-});
-
+//Chuc nang dang nhap
 app.post(
   "/login",
   checkNotAuthenticated,
+  //Chuyen huong toi trang chu neu dang nhap thanh cong
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
@@ -78,6 +76,7 @@ app.post(
   })
 );
 
+//Chuc nang dang ky
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
    if (userFound) {
@@ -101,11 +100,13 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   }
 });
 
+//Chuc nang Log Out
 app.delete("/logout", (req, res) => {
   req.logOut();
   res.redirect("/login");
 });
 
+//Ket noi voi MongoDB
 mongoose
   .connect("mongodb://localhost:27017/auth", {
     useUnifiedTopology: true,
