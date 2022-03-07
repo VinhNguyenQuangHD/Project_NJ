@@ -64,6 +64,10 @@ app.get("/adminpage", checkAuthenticated, (req, res) => {
   res.render("admin");
 });
 
+app.get("/adminpage/create", checkAuthenticated, (req, res) => {
+  res.render("create");
+});
+
 app.post(
   "/login",
   checkNotAuthenticated,
