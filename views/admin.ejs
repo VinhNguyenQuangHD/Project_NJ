@@ -258,19 +258,37 @@ table{
                     </a>
                 </div>
 
-                <form action="/" method="POST">
+                <form action="/adminpage" method="POST">
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Code Name</th>
                                 <th>@Email</th>
                                 <th>Gender</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Social link</th>
+                                <th>Ages</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <% for(var i = 0; i < users.length; i++) { %>
+                                <tr>
+                                    <td><%= i + 1 %></td>
+                                    <td><%= users[i].codename %></td>
+                                    <td><%= users[i].email %></td>
+                                    <td><%= users[i].gender %></td>
+                                    <td><%= users[i].ages %></td>
+                                    <td><%= users[i].social_link %></td>
+                                    <td>
+                                        <a href="/adminpage/update?id=<%= users[i]._id%>" class="btn border-shadow update">
+                                            <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                        </a>
+                                        <a class="btn border-shadow delete" data-id=<%= users[i]._id%> >
+                                            <span class="text-gradient"><i class="fas fa-times"></i></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% } %>
                         </tbody>
                     </table>
                 </form>

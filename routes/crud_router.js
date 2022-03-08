@@ -4,9 +4,9 @@ const routes = express.Router();
 const axios = require('axios');
 
 routes.get('/adminpage', (req,res) =>{
-    axios.get('http://localhost:8080').then(function(response){
+    axios.get('http://localhost:8080/api/users').then(function(response){
         console.log(response);
-        res.render('admin',{user:response.data});
+        res.render('admin',{users:response.data});
     }).catch(err => {
         res.send(err);
     })
@@ -25,9 +25,9 @@ routes.get('/adminpage/update', (req,res) =>{
     })
 });
 
-routes.post('/adminpage/create', controller.create );
-routes.get('/adminpage', controller.read );
-routes.put('/adminpage/update/:id', controller.update );
-routes.post('/adminpage/update/:id', controller.delete );
+routes.post('/api/users', controller.create );
+routes.get('/api/users', controller.read );
+routes.put('/api/users/:id', controller.update );
+routes.post('/api/users/:id', controller.delete );
 
 module.exports = routes;
