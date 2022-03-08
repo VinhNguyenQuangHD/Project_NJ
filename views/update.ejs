@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Application</title>
+    <title>Update user information</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <style>
@@ -269,7 +269,7 @@ table{
                 <div class="form-group">
                     <label for="name" class="text-light">Name</label>
                     <input type="hidden" name="id" value="">
-                    <input type="text" name="codename" value="" placeholder="Nhap biet danh o day">
+                    <input type="text" name="codename" value="<%= user.codename %>" placeholder="Nhap biet danh o day">
                 </div>
                 <div class="form-group">
                     <label for="Email" class="text-light">Email</label>

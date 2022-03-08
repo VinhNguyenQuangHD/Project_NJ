@@ -39,7 +39,7 @@ router.post('/register',
             res.redirect('/register');
         } else {
             req.session.success = true;
-            res.redirect('/register');
+            res.redirect('/login');
         }
     });
 

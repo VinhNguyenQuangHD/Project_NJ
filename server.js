@@ -48,7 +48,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
-app.use('/register', user_routes);
+//app.use('/', user_routes);
 app.use('/', require('../Project_NJ/routes/crud_router'));
 
 app.get("/", checkAuthenticated, (req, res) => {
