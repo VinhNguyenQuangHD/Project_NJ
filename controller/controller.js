@@ -49,7 +49,8 @@ exports.update = (req,res) =>{
         if(!data){
             res.status(400).send({message: `Khong the cap nhat thong tin cua ${id}`}); 
         }else{
-            res.send(data)
+            res.send(data);
+            ré.redirect('/adminpage');
         }
     }).catch(err =>{
         res.status(500).send({message: err.message || "Khong the cap nhat user nay"})
@@ -68,6 +69,6 @@ exports.delete = (req,res) =>{
             })
         }
     }).catch(err =>{
-        res.status(500).send({message: err.message || "Khong the cap nhat user nay"})
+        res.status(500).send({message: err.message || "Khong the Xoa user nay"})
     })
 }

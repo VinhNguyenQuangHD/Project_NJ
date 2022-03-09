@@ -18,7 +18,7 @@ routes.get('/adminpage/create', (req,res) =>{
 });
 
 routes.get('/adminpage/update', (req,res) =>{
-    axios.get('http://localhost:8080', {params: {id: req.query.id}}).then(function(userdata){
+    axios.get('http://localhost:8080/api/users', {params: {id: req.query.id}}).then(function(userdata){
         res.render('update',{user:userdata.data});
     }).catch(err => {
         res.send(err);

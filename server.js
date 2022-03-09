@@ -50,6 +50,7 @@ app.use(methodOverride("_method"));
 app.use(express.static("public"));
 //app.use('/', user_routes);
 app.use('/', require('../Project_NJ/routes/crud_router'));
+app.use('/', require('../Project_NJ/routes/chude_router'));
 
 app.get("/", checkAuthenticated, (req, res) => {
   res.render("index", { name: req.user.name });
@@ -58,6 +59,7 @@ app.get("/", checkAuthenticated, (req, res) => {
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("register");
 });
+
 
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login");
