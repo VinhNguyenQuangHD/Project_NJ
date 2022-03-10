@@ -247,7 +247,7 @@ table{
             <nav>
                 <div class="container">
                     <div class="text-center">
-                        <a href="/" class="nav-brand text-dark">User Management System</a>
+                        <a href="/" class="nav-brand text-dark">To main page</a>
                     </div>
                 </div>
             </nav>
@@ -256,7 +256,7 @@ table{
             <div class="container">
                 <div class="box-nav d-flex justify-between">
                    <div class="filter">
-                       <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
+                       <a href="/adminpage"><i class="fas fa-angle-double-left"></i> All Users</a>
                    </div>
                 </div>
                 <div class="form-title text-center">
@@ -268,46 +268,33 @@ table{
             <div class="new_user">
                 <div class="form-group">
                     <label for="name" class="text-light">Name</label>
-                    <input type="hidden" name="id" value="">
-                    <input type="text" name="codename" value="<%= user.codename %>" placeholder="Nhap biet danh o day">
+                    <input type="hidden" name="id" value="<%= users._id%>">
+                    <input type="text" name="codename" value="<%= users.Code_name %>" placeholder="Nhap biet danh o day">
                 </div>
                 <div class="form-group">
                     <label for="Email" class="text-light">Email</label>
-                    <input type="text" name="email" value="" placeholder="example@gmail.com">
+                    <input type="text" name="email" value="<%= users.email %>" placeholder="example@gmail.com">
                 </div>
 
                 <div class="form-group">
                     <label for="Ages" class="text-light">Ages</label>
-                    <input type="text" name="ages" value="" placeholder="Nhap tuoi o day">
+                    <input type="text" name="ages" value="<%= users.ages %>" placeholder="Nhap tuoi o day">
                 </div>
                 <div class="form-group">
                     <label for="gender" class="text-light">Gender</label>
                     <div class="radio inline">
-                        <input type="radio" id="radio-2" name="gender" value="Male" >
+                        <input type="radio" id="radio-2" name="gender" value="Male" <%= users.Gender == 'Male' ? 'checked' : '' %>>
                         <label for="radio-2" class="radio-label">Male</label>
                     </div>
                     <div class="radio inline">
-                        <input type="radio" id="radio-3" name="gender" value="Female" >
+                        <input type="radio" id="radio-3" name="gender" value="Female" <%= users.Gender == 'Female' ? 'checked' : '' %>>
                         <label for="radio-3" class="radio-label">Female</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="Social_link" class="text-light">Social link</label>
-                    <input type="text" name="social_link" value="" placeholder="Nhap tai khoan mang xa hoi o day">
-                </div>
-        
-        
-                <div class="form-group">
-                    <label for="gender" class="text-light">Status</label>
-                    <div class="radio inline">
-                        <input type="radio" id="radio-4" name="status" value="Active" <%= user.status == 'Active' ? 'checked' : '' %> >
-                        <label for="radio-4" class="radio-label">Active</label>
-                    </div>
-                    <div class="radio inline">
-                        <input type="radio" id="radio-5" name="status" value="Inactive" <%= user.status == 'Inactive' ? 'checked' : '' %> >
-                        <label for="radio-5" class="radio-label">Inactive</label>
-                    </div>
+                    <input type="text" name="social_link" value="<%= users.Social_link %>" placeholder="Nhap tai khoan mang xa hoi o day">
                 </div>
         
                 <div class="form-group">
@@ -321,10 +308,6 @@ table{
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
         <script>
-            //Thong bao nhap user thanh cong
-            $("#add_user").submit(function(event){
-                alert("Data Inserted Successfully!");
-            })
             //thong bao cap nhat user thanh cong
             $("#update_user").submit(function(event){
                 event.preventDefault();
@@ -338,7 +321,7 @@ table{
 
 
                 var request = {
-                    "url" : `http://localhost:3000/api/users/${data.id}`,
+                    "url" : `http://localhost:8080/api/users/${data.id}`,
                     "method" : "PUT",
                     "data" : data
                 }
@@ -348,26 +331,6 @@ table{
                 })
 
             })
-
-            if(window.location.pathname == "/"){
-                $ondelete = $(".table tbody td a.delete");
-                $ondelete.click(function(){
-                    var id = $(this).attr("data-id")
-
-                    var request = {
-                        "url" : `http://localhost:3000/api/users/${id}`,
-                        "method" : "DELETE"
-                    }
-
-                    if(confirm("Do you really want to delete this record?")){
-                        $.ajax(request).done(function(response){
-                            alert("Data Deleted Successfully!");
-                            location.reload();
-                        })
-                    }
-
-                })
-            }
         </script>
 </body>
 </html>

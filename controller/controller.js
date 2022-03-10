@@ -28,19 +28,31 @@ exports.create = (req,res) =>{
 }
 
 exports.read = (req,res) =>{
-    //Tim kiem thong tin
-    Infor_db.find().then(user => {
-        res.send(user)
-    }).catch(err =>{
-        res.status(500).send({message: err.message || "Khong the tim kiem thong tin ve user nay"})
-    })
+    if(req.query.id)
+    {
+        const id = req.query.id;
+        Infor_db.findById(id).then(data =>{
+            if(!data){
+                res.status(404).send({message: "Khong the load du lieu"});
+            }else{
+                res.send(data);
+            }
+        });
+    }else{
+        //Tim kiem thong tin
+        Infor_db.find().then(user => {
+            res.send(user)
+        }).catch(err =>{
+            res.status(500).send({message: err.message || "Da co loi xay ra"})
+        })
+    }
+    
 }
 
 exports.update = (req,res) =>{
     //Neu form cap nhat bi trong
     if(!req.body ){
-        res.status(400).send({message: "Form cap nhat khong duoc de trong"}); 
-        return;
+        return res.status(400).send({message: "Form cap nhat khong duoc de trong"}); 
     }
 
     //Neu khong thi thuc hien cap nhat
@@ -50,7 +62,6 @@ exports.update = (req,res) =>{
             res.status(400).send({message: `Khong the cap nhat thong tin cua ${id}`}); 
         }else{
             res.send(data);
-            ré.redirect('/adminpage');
         }
     }).catch(err =>{
         res.status(500).send({message: err.message || "Khong the cap nhat user nay"})

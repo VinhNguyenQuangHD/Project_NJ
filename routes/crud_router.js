@@ -18,8 +18,8 @@ routes.get('/adminpage/create', (req,res) =>{
 });
 
 routes.get('/adminpage/update', (req,res) =>{
-    axios.get('http://localhost:8080/api/users', {params: {id: req.query.id}}).then(function(userdata){
-        res.render('update',{user:userdata.data});
+    axios.get('http://localhost:8080/api/users', { params: {id: req.query.id}}).then(function(userdata){
+        res.render('update',{users: userdata.data});
     }).catch(err => {
         res.send(err);
     })
@@ -28,6 +28,6 @@ routes.get('/adminpage/update', (req,res) =>{
 routes.post('/api/users', controller.create );
 routes.get('/api/users', controller.read );
 routes.put('/api/users/:id', controller.update );
-routes.post('/api/users/:id', controller.delete );
+routes.delete('/api/users/:id', controller.delete );
 
 module.exports = routes;
