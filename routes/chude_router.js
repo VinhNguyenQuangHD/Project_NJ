@@ -19,7 +19,7 @@ routes.get('/adminpage/topics/createnewtopic', (req,res) =>{
 });
 
 routes.get('/adminpage/topics/updatetopic', (req,res) =>{
-    axios.get('http://localhost:8080/api/topic', {params: {id: req.query._id}}).then(function(topicdata){
+    axios.get('http://localhost:8080/api/topic', {params: {id: req.query.id}}).then(function(topicdata){
         res.render("admin_chude_update", {topic: topicdata.data});
     }).catch(err =>{
         res.send(err);
@@ -29,8 +29,9 @@ routes.get('/adminpage/topics/updatetopic', (req,res) =>{
 routes.post('/api/topic', controller.topic_create );
 routes.get('/api/topic', controller.topic_read );
 routes.put('/api/topic/:id', controller.topic_update );
-routes.post('/api/topic/:id', controller.topic_delete );
+routes.delete('/api/topic/:id', controller.topic_delete );
 
 module.exports = routes;
+
 
 

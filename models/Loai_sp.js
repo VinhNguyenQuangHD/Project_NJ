@@ -12,5 +12,5 @@ const LoaiSP_Schema = new mongoose.Schema({
     },
 });
 
-const LoaiSP_db = mongoose.model('.Loai_san_pham', LoaiSP_Schema);
+const LoaiSP_db = mongoose.model('Loai_san_pham', LoaiSP_Schema);
 module.exports = LoaiSP_db;

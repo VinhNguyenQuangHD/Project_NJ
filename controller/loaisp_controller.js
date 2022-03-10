@@ -10,7 +10,7 @@ exports.create_new_produce_type = (req,res) =>{
         });
 
         new_type_product.save(new_type_product).then(data =>{
-            res.redirect('/adminpage/producttype');
+            res.redirect('/adminpage/protype');
         }).catch(err =>{
             res.status(500).send({message: err.message || "Khong the them moi laoi san pham"});
         });
@@ -18,11 +18,23 @@ exports.create_new_produce_type = (req,res) =>{
 }
 
 exports.read_new_produce_type = (req,res) => {
-    loai_sp_db.find().then(protype =>{
-        res.send(protype);
-    }).catch(err => {
-        res.status(500).send({message: err.message || "Khong tim thay du lieu de xem"});
-    });
+    if(req.query.id){
+        const id = req.query.id;
+        loai_sp_db.findById(req.query.id).then(data =>{
+            if(!data){
+                res.status(404).send({message: "Khong the doc du lieu"});
+            }else{
+                res.send(data);
+            }
+        })
+    }else{
+        loai_sp_db.find().then(protype =>{
+            res.send(protype);
+        }).catch(err => {
+            res.status(500).send({message: err.message || "Khong tim thay du lieu de xem"});
+        });
+    }
+    
 }
 
 exports.update_new_produce_type = (req,res) =>{

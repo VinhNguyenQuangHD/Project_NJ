@@ -22,11 +22,24 @@ exports.topic_create = (req,res) =>{
 }
 
 exports.topic_read = (req,res) =>{
-    chude_db.find().then(topic =>{
-        res.send(topic)
-    }).catch(err => {
-        res.status(500).send({message: err.message || "Khong tim thay bat cu chu de nao"})
-    })
+    if(req.query.id){
+        const id = req.query.id;
+        chude_db.findById(id).then(data =>{
+            if(!data){
+                res.status(404).send({message: "Khong the load danh sach"});
+            }else{
+                res.send(data);
+            }
+        });
+
+    }else{
+        chude_db.find().then(topic =>{
+            res.send(topic)
+        }).catch(err => {
+            res.status(500).send({message: err.message || "Khong tim thay bat cu chu de nao"});
+        });
+    }
+    
 }
 
 exports.topic_update = (req,res) =>{
@@ -44,8 +57,7 @@ exports.topic_update = (req,res) =>{
             }
         }).catch(err =>{
             res.status(500).send({message : err.message || "Co loi xay ra"});
-        });
-    }
+        });}
 }
 
 exports.topic_delete = (req,res) =>{

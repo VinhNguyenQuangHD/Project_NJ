@@ -273,10 +273,10 @@ table{
                                     <td><%= protypes[i].Ma_Loai %></td>
                                     <td><%= protypes[i].Ten_loai %></td>
                                     <td>
-                                        <a href="/adminpage/topics/updatetopic?id=<%= protypes[i].id_chude%>" class="btn border-shadow update">
+                                        <a href="/adminpage/protype/proupdate?id=<%= protypes[i]._id%>" class="btn border-shadow update">
                                             <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
                                         </a>
-                                        <a class="btn border-shadow delete" data-id=<%= protypes[i].id_chude%> >
+                                        <a class="btn border-shadow delete" data-id=<%= protypes[i]._id%> >
                                             <span class="text-gradient"><i class="fas fa-times"></i></span>
                                         </a>
                                     </td>
@@ -289,33 +289,6 @@ table{
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
         <script>
-            //Thong bao nhap user thanh cong
-            $("#add_user").submit(function(event){
-                alert("Data Inserted Successfully!");
-            })
-            //thong bao cap nhat user thanh cong
-            $("#update_user").submit(function(event){
-                event.preventDefault();
-
-                var unindexed_array = $(this).serializeArray();
-                var data = {}
-
-                $.map(unindexed_array, function(n, i){
-                    data[n['name']] = n['value']
-                })
-
-
-                var request = {
-                    "url" : `http://localhost:3000/api/users/${data.id}`,
-                    "method" : "PUT",
-                    "data" : data
-                }
-
-                $.ajax(request).done(function(response){
-                    alert("Data Updated Successfully!");
-                })
-
-            })
 
             if(window.location.pathname == "/"){
                 $ondelete = $(".table tbody td a.delete");
@@ -323,7 +296,7 @@ table{
                     var id = $(this).attr("data-id")
 
                     var request = {
-                        "url" : `http://localhost:3000/api/users/${id}`,
+                        "url" : `http://localhost:8080/api/users/${id}`,
                         "method" : "DELETE"
                     }
 
