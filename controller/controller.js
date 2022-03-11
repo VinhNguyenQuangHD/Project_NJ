@@ -58,6 +58,7 @@ exports.update = (req,res) =>{
     //Neu khong thi thuc hien cap nhat
     const id = req.params.id;
     Infor_db.findByIdAndUpdate(id, req.body, {useFindAndModify: false}).then(data =>{
+        console.log(req.body)
         if(!data){
             res.status(400).send({message: `Khong the cap nhat thong tin cua ${id}`}); 
         }else{

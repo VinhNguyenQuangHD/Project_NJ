@@ -269,7 +269,7 @@ table{
                 <div class="form-group">
                     <label for="name" class="text-light">Name</label>
                     <input type="hidden" name="id" value="<%= users._id%>">
-                    <input type="text" name="codename" value="<%= users.Code_name %>" placeholder="Nhap biet danh o day">
+                    <input type="text" name="Code_name" value="<%= users.Code_name %>" placeholder="Nhap biet danh o day">
                 </div>
                 <div class="form-group">
                     <label for="Email" class="text-light">Email</label>
@@ -283,18 +283,18 @@ table{
                 <div class="form-group">
                     <label for="gender" class="text-light">Gender</label>
                     <div class="radio inline">
-                        <input type="radio" id="radio-2" name="gender" value="Male" <%= users.Gender == 'Male' ? 'checked' : '' %>>
+                        <input type="radio" id="radio-2" name="Gender" value="Male" <%= users.Gender == 'Male' ? 'checked' : '' %>>
                         <label for="radio-2" class="radio-label">Male</label>
                     </div>
                     <div class="radio inline">
-                        <input type="radio" id="radio-3" name="gender" value="Female" <%= users.Gender == 'Female' ? 'checked' : '' %>>
+                        <input type="radio" id="radio-3" name="Gender" value="Female" <%= users.Gender == 'Female' ? 'checked' : '' %>>
                         <label for="radio-3" class="radio-label">Female</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="Social_link" class="text-light">Social link</label>
-                    <input type="text" name="social_link" value="<%= users.Social_link %>" placeholder="Nhap tai khoan mang xa hoi o day">
+                    <input type="text" name="Social_link" value="<%= users.Social_link %>" placeholder="Nhap tai khoan mang xa hoi o day">
                 </div>
         
                 <div class="form-group">
@@ -308,6 +308,10 @@ table{
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
         <script>
+            $("#add_update_user").submit(function(event){
+    alert("Data Inserted Successfully!");
+})
+
             //thong bao cap nhat user thanh cong
             $("#update_user").submit(function(event){
                 event.preventDefault();
@@ -317,9 +321,8 @@ table{
 
                 $.map(unindexed_array, function(n, i){
                     data[n['name']] = n['value']
+                    
                 })
-
-
                 var request = {
                     "url" : `http://localhost:8080/api/users/${data.id}`,
                     "method" : "PUT",
@@ -331,6 +334,7 @@ table{
                 })
 
             })
+            
         </script>
 </body>
 </html>
