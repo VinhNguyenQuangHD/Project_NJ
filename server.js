@@ -6,13 +6,17 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const User = require("./models/User");
+const user_routes = require('./routes/user.routes');
 const bcrypt = require("bcryptjs");
+const morgan = require("morgan");
 const {
   checkAuthenticated,
   checkNotAuthenticated,
 } = require("./middleware/auth");
+const body_parser = require('body-parser');
 
 const app = express();
+const PORT = process.env.PORT || 8080;
 
 const initializePassport = require("./passport-config");
 initializePassport(
@@ -27,10 +31,13 @@ initializePassport(
   }
 );
 
+//Xac dinh view qua form
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use(body_parser.urlencoded({ extended: true }));
 app.use(flash());
 app.use(
+  //Luu phien dang nhap tai mot cong nhat dinh nao do
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -41,6 +48,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
+//app.use('/', user_routes);
+app.use('/', require('../Project_NJ/routes/crud_router'));
+app.use('/', require('../Project_NJ/routes/chude_router'));
+app.use('/', require('../Project_NJ/routes/loaisp_router'));
 
 app.get("/", checkAuthenticated, (req, res) => {
   res.render("index", { name: req.user.name });
@@ -50,13 +61,17 @@ app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("register");
 });
 
+
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login");
 });
 
+
+//Chuc nang dang nhap
 app.post(
   "/login",
   checkNotAuthenticated,
+  //Chuyen huong toi trang chu neu dang nhap thanh cong
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
@@ -64,15 +79,11 @@ app.post(
   })
 );
 
+//Chuc nang dang ky
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
-  const password_found = await User.findOne({password: req.body.password}); 
-  const repassword_found = await User.findOne({password: req.body.repassword}); 
    if (userFound) {
     req.flash("error", "User with that email already exists");
-    res.redirect("/register");
-  } else if(password_found == null || password_found != repassword_found){
-    req.flash("error", "pass is invalid");
     res.redirect("/register");
   }else{
     try {
@@ -92,18 +103,20 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   }
 });
 
+//Chuc nang Log Out
 app.delete("/logout", (req, res) => {
   req.logOut();
   res.redirect("/login");
 });
 
+//Ket noi voi MongoDB
 mongoose
   .connect("mongodb://localhost:27017/auth", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
   .then(() => {
-    app.listen(3000, () => {
-      console.log("Server is running on Port 3000");
+    app.listen(PORT, () => {
+      console.log(`Server: http://localhost:${PORT}`);
     });
   });
