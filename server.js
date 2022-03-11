@@ -53,9 +53,24 @@ app.use('/', require('../Project_NJ/routes/crud_router'));
 app.use('/', require('../Project_NJ/routes/chude_router'));
 app.use('/', require('../Project_NJ/routes/loaisp_router'));
 
+
+const axios = require('axios');
+const controller = require('../Project_NJ/controller/chude_controller');
+const controller1 = require('../Project_NJ/controller/loaisp_controller');
+
 app.get("/", checkAuthenticated, (req, res) => {
-  res.render("index", { name: req.user.name });
+  let urls = ['http://localhost:8080/api/topic', 'http://localhost:8080/api/protype'];
+
+  axios.all(urls.map((url) => axios.get(url))).then(
+    axios.spread((resp,resp2) =>{
+      res.render("index", {topic: resp.data, prop: resp2.data});
+    })
+  );
+
 });
+
+app.get('/api/topic', controller.topic_read );
+app.get('/api/protype', controller1.read_new_produce_type );
 
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("register");

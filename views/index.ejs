@@ -1,15 +1,1354 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main page</title>
-  </head>
-  <body>
-    <h1>Hello world <%= name%></h1>
-    <form action="/logout?_method=DELETE" method="POST">
-      <button type="submit">LOGOUT</button>
-    </form>
-  </body>
+<html>
+    <meta name="viewport" content="width=device-width">
+    <style>
+      .Header{
+    width: 100%;
+    height: 570px;
+    background-image: url(https://previews.123rf.com/images/vicushka/vicushka1510/vicushka151000023/46112264-raw-rindersteak-und-frischen-zutaten-f%C3%BCr-das-kochen-auf-rustikalen-hintergrund-ansicht-von-oben-bann.jpg);
+    background-size: cover;
+}
+.Logo__Web{
+    height: 100%;
+    background-size: cover;
+    background-image: url(../IMG/modern-professional-sign-logo-kitchen-cook-vector-19879055-removebg-preview.png);
+    width: 113px;
+}
+body {
+    /* height:1000px; */
+    margin: 0;
+    /* background: #000000d1; */
+}
+
+.Menu {
+    transition: 0.5s;
+    border-bottom: solid;
+    transform:2s;
+    position: relative;
+    /* align-items: center; */
+    background: #ffffff33;
+    height: 20%;
+    width: 100%;
+    display: flex;
+    font-size: 28px;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    animation:2s Menu ease;
+    border-color: #68c33b;
+    border-width: 1px;
+}
+@keyframes Menu{
+    0%{
+        opacity: 0;
+        transform:translateY(-300px);
+    }
+    25%{
+        opacity: 1;
+        transform:translateY(50px);
+    }
+    75%{
+        opacity: 0;
+        transform:translateY(-50px);
+    }
+    100%{
+        opacity: 1;
+        transform:translateY(0px);
+    }
+}
+
+.Menu__Web {
+    display: flex;
+}
+
+.Menu__Content {
+    display: flex;
+}
+
+.Title__Menu {
+    line-height: 45px;
+    margin-left: 10%;
+    /* margin-right: 5%; */
+}
+
+.Title__Menu a.Title{
+    transition:0.5s;
+    text-decoration: auto;
+    color: aliceblue;
+    font-weight: 100;
+}
+
+.Border__Title--Hover {
+    opacity: 0;
+    border-radius: 5px;
+    border-style: solid;
+    transform: translateY(0px);
+    width: 0px;
+    border-width: 2px;
+    color: #78ff78;
+    transition: 0.5s;
+}   
+h1#Welcome {
+    /* position: absolute; */
+    transition: 0.5s;
+    margin-left: 20%;
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 1%;
+    animation:2s Welcome ease-in-out;
+}
+@keyframes Welcome{
+    0%{
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    50%{
+        opacity: 1;
+        transform: translateX(50px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.Line__BackGround__Header {
+    box-sizing: border-box;
+    width: 230px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #35b3ff;
+    display: flex;
+    justify-content: center;
+    /* position: absolute; */
+    margin-left: 21%;
+    box-shadow: 0px 0px 4px white;
+    border-radius: 13px;
+    top: 42%;
+}
+.decoration__Web {
+    display: block;
+    margin-left: 4%;
+    /* position: relative; */
+    font-size: 21px;
+    color: white;
+    text-shadow: 0px 2px #44cbc7;
+    text-align: center;
+    width: 53%;
+    margin-top: 2%;
+    line-height: 32px;
+}
+
+
+.BackGround__Header {
+    display: block;
+    /* text-align: center; */
+}
+
+.Title__Menu:hover a.Title{
+    color: #00f700;
+}
+.Title__Menu:hover .Border__Title--Hover{
+    opacity: 1;
+    width: 100%;
+}
+.Bar {
+    transition: 0.5s;
+    color: white;
+    font-size: 40px;
+    margin-right: 2%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1c2224;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.Bar:hover {
+    background: #36d936;
+    border-radius: 0%;
+}
+input#CheckBox__Menu__Mobile {
+    display:none;
+}
+label#Background__overLay__Moblie {
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: #0c0a0ae0;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+#CheckBox__Menu__Mobile:checked ~ #Background__overLay__Moblie{
+    opacity: 1;
+    visibility:visible;
+    z-index: 1;
+}
+.decoration2__Web{
+    animation:1.5s decoration1__Web ease-in;
+}
+.decoration1__Web{
+    animation:2s decoration1__Web ease-in; 
+}
+@keyframes decoration1__Web{
+    0%{
+        opacity: 0;
+        transform:translateX(-500px);
+    }
+    100%{
+        opacity: 1;
+        transform:translateX(0px);
+    }
+}
+input#CheckBox__Menu__Mobile:checked ~ .MenuBar__Mobile{
+    transition: 0.5s;
+    position: fixed;
+    opacity: 1;
+    transform: translateX(0px);
+    visibility: visible;
+    display: flex;
+}
+label.MenuBar__Mobile {
+    z-index: 1;
+    position:fixed;
+    transition: 0.5s;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 0px 12px white;
+    background: #545151;
+    position: fixed;
+    height: 100%;
+    width: 50%;
+    /* color: #fbfbfb; */
+    top: 0px;
+    right: 0px;
+    transform: translateX(1000px);
+    visibility: hidden;
+    opacity: 0;
+    /* display: none; */
+}.MenuBar__Mobile__Content {
+    border-radius: 5px;
+    background: #3c3838;
+    height: 85%;
+    width: 85%;
+    box-shadow: 0px 0px 6px black;
+}
+.topic__Mobile--choice {
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 5% 5% 5% 2%;
+    line-height: 4.2rem;
+}
+
+.content__topic__Mobile {
+    transition: 0.5s;
+    box-shadow: 0px 0px 4px white;
+    border-width: 2px;
+    height: 11%;
+    border-style: solid;
+    display: flex;
+    width: 95%;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    border-radius: 3px;
+    background: #00000066;
+}
+
+a.topic__Mobile {
+    text-decoration: auto;
+    color: aliceblue;
+}
+.content__topic__Mobile:hover {
+    color: #45ff76;
+}
+.Bar__Close--Click {
+    cursor: pointer;
+    position: relative;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    top: -45%;
+    color: aliceblue;
+    font-size: 34px;
+    transition: 0.5s;
+}
+
+.Bar__Close--Click:hover {
+    color: #4cd34c;
+    transform: rotateZ(180deg);
+}
+.Content {
+    background: #69635a00;
+    /* height: 1000px; */
+    margin-top: 5%;
+}
+
+.Content1__Decretion {
+    width: 100%;
+    /* height: 330px; */
+    /* background: #bbeded66; */
+    padding: 0%;
+}
+
+.Content1__Tilte {
+    padding-left: 2%;
+    margin-bottom: 2%;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.Content1__Produce {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.Produce__Content1 {
+    box-shadow: 0px 0px 12px black;
+    height: 90%;
+    width: 20%;
+    background: antiquewhite;
+    border-radius: 9px;
+    /* padding: 7px; */
+    position: relative;
+}
+.Inf__Produce__Content1 {
+    transition: 0.5s;
+    display: block;
+    line-height: 26px;
+    color: white;
+    border-radius: 9px;
+    background: #00000094;
+    position: relative;
+    top: 46.5%;
+    height: 50%;
+    padding: 2%;
+    text-align: -webkit-match-parent;
+}
+
+.Name__Produce__Content1 {
+    font-size: 18px;
+}
+
+.Date__PushProduce__Content1 {
+    font-size: 15px;
+    margin-left: 10%;
+}
+
+.Writter__Produce__Content1 {
+    font-size: 18px;
+}
+.Produce__Content1:hover .Background__Content1{
+    opacity: 1;
+    z-index: 1;
+
+}
+.Produce__Content1:hover .Inf__Produce__Content1{
+    opacity: 0;
+    z-index: 0;
+
+}
+.Background__Content1 {
+    display: flex;
+    opacity: 0;
+    border-radius: 8px;
+    background: #000000b3;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    /* z-index: 1; */
+    transition: 0.5s;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+a.see__Detail {
+    transition:0.5s;
+    z-index: 1;
+    background: #9ae16eba;
+    padding: 5%;
+    border-radius: 13px;
+    box-shadow: 0px 0px 8px white;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
+.see__Detail:hover{
+    color:#00f700;
+    background:white;
+    box-shadow: 0px 0px 10px green;
+
+}
+.Content__Review {
+    position: relative;
+    display: flex;
+    /* height: 300px; */
+}
+
+.Title__Content1 {
+    padding-right: 15px;
+    width: 30%;
+    height: 73%;
+    border-left-style: solid;
+    border-width: 1px;
+    padding-left: 16px;
+}
+
+.Text1__Content1 {
+    width: 80%;
+    font-size: 45px;
+}
+
+.Text2__Content1 {
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    line-height: 39px;
+    margin-right: 0px;
+}
+.Bulkhead {
+    margin-top: 22px;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    /* background: aquamarine; */
+    height: 1%;
+}
+
+.Bulkhead__Wall {
+    border-style: solid;
+    width: 74%;
+    border-width: 1px;
+    height: 0px;
+}
+.Content2__Decretion {
+    padding-right: 0px;
+    margin-top: 5%;
+    width: 100%;
+    /* display: flex; */
+    height: 30%;
+    /* background: #00ffff1a; */
+}
+
+.Content2__Review {
+    height: 71%;
+    margin-top: 1%;
+    display: flex;
+    /* flex-flow: row-reverse; */
+    padding-right: 10px;
+}
+
+.Content2__Tilte {
+    font-size: 32px;
+    font-weight: 600;
+    margin-left: 2%;
+}
+
+.Title__Content2 {
+    height: 100%;
+    padding-left: 15px;
+    width: 20%;
+    border-right-style: solid;
+    border-width: 1px;
+}
+.Text1__Content2 {
+    FONT-SIZE: 35px;
+}
+
+.Text2__Content2 {
+    font-size: 18px;
+    line-height: 30px;
+    text-align: inherit;
+}
+
+.Content2__Produce {
+    margin-bottom: 30px;
+    justify-content: center;
+    display: flex;
+    width: 80%;
+    /* width: 15%; */
+    /* margin-left: 1%; */
+    /* height: 100%; */
+}
+.Produce__Content2 {
+    margin-left: 25px;
+    text-align: center;
+    border-radius: 8px;
+    height: 220px;
+    WIDTH: 202px;
+    background: aliceblue;
+    position: relative;
+    transition: 0.5s;
+    box-shadow: 0px 0px 12px black;
+}
+
+.Background__Content2 {
+    transition: 0.5s;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 8px;
+    background: #000000b3;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    /* z-index: 1; */
+    transition: 0.5s;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* display: flex; */
+    /* border-radius: 6px; */
+    /* transition: 0.5s; */
+    /* background: rgb(0 0 0 / 86%); */
+    /* height: 100%; */
+    /* position: absolute; */
+    /* opacity: 0; */
+    /* visibility: hidden; */
+    /* width: 100%; */
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* text-align: center; */
+}
+
+.Inf__Produce__Content2 {
+    border-radius: 9px;
+    color: #2c2c2c;
+    transition: 0.5s;
+    position: relative;
+    height: 30%;
+    text-align: center;
+    font-size: 18px;
+    background: #645c5c69;
+}
+.Produce__Content2:hover .Inf__Produce__Content2{
+    opacity: 0;
+    z-index: 0;
+    visibility: hidden;
+}
+
+.Name__Produce__Content2 {
+    height: 40%;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.Date__PushProduce__Content2 {
+    display: flex;
+    height: 30%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.Writter__Produce__Content2 {
+    display: flex;
+    height: 30%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.Produce__Content2:hover .Background__Content2{
+    opacity:1;
+    visibility:visible;
+    z-index: 1;
+}
+.Produce__Content2:hover .see__Detail2{
+    opacity:1;
+    z-index: 1;
+    visibility:visible;
+}
+a.see__Detail2:hover{
+    background: #33ff00;
+    color: #ffffff;
+    box-shadow: 0px 0px 12px #00ff11;
+}
+a.see__Detail2 {
+    transition: 0.5s;
+    z-index: 0;
+    background: #efefefba;
+    padding: 5%;
+    border-radius: 13px;
+    box-shadow: 0px 0px 8px white;
+    text-decoration: none;
+    color: #3f7800;
+    font-size: 18px;
+    opacity: 0;
+    visibility: hidden;
+}
+footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    color: #84b3b3;
+    background: linear-gradient(9deg, black, #00000085);
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    /* height: 14%; */
+    padding-bottom: 40px;
+    bottom: -80%;
+}
+.Header__Footer {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    box-shadow: 3px 2px 6px antiquewhite;
+    background: linear-gradient(275deg, #0000007a, #0000002b);
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    position: relative;
+}
+.Content__Text__Footer1 {
+    margin-right: 45px;
+    flex: 2;
+}
+.Big__Content__Text__Footer1 {
+    font-size: 1.4rem;
+    padding-bottom: 10px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #ffe4c459;
+    /* box-shadow: 4px 0px 1px antiquewhite; */
+}
+.Small__Content__Text__Footer1 {
+    text-align: justify;
+    font-size: 1.03rem;
+    margin-top: 12px;
+    line-height: 32px;
+}
+.Big__Content__Text__Footer2 {
+    color: #a1aeb9;
+    font-family: sans-serif;
+    font-size: 1.3rem;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #a99f9fcf;
+    padding-bottom: 12px;
+}
+.Content__Text__Footer3 {
+    padding-top: 8px;
+    border-top: solid;
+    border-width: 1px;
+}
+.Big__Content__Text__Footer3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #a1aeaa;
+}
+.Small__Content__Text__Footer3 a {
+    color: antiquewhite;
+}
+.Content2__Review {
+    flex-direction: column-reverse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Title__Content2 {
+    border-style: none;
+    width: 100%;
+    text-align: center;
+    /* font-size: 53px; */
+}
+.Category__Content3 {
+    padding-bottom: 30px;
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    /* margin-bottom: 30px; */
+}
+
+.Category__Content__Title {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+
+.Category__Produces__Content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.Category__Produce__Content {
+    transition: 0.5s;
+    margin: 14px;
+    box-shadow: 0px 0px 12px #00d700;
+    position: relative;
+    height: 280px;
+    width: 240px;
+    background: aqua;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.Name__Category__Produce {
+    
+    transition: 0.5s;
+    padding: 15px;
+    font-size: 20px;
+    background: aliceblue;
+    box-shadow: 0px 0px 12px black;
+    border-radius: 5px;
+    color: green;
+}
+a.Name__Category {
+    text-decoration: auto;
+    color: green;
+}
+
+.Background__overLay__Catetory {
+    z-index: 0;
+    background: #000000d1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s;
+    visibility: hidden;
+}
+.Inf__Category__Produce__Content {
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+.Category__Produce__Content:hover .Background__overLay__Catetory{
+    z-index: 1;
+    visibility: visible;
+    opacity: 1;
+}
+.Category__Produce__Content:hover .Inf__Category__Produce__Content{
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+}
+.Category__Produce__Content:hover{
+    box-shadow: 0px 0px 12px black;
+}
+.Name__Category__Produce:hover{
+    font-size: 25px;
+    transition: 0.5s;
+    justify-content: center;
+    display: flex;
+    /* height: 35px; */
+    box-shadow: 0px 0px 12px;
+    /* color: white; */
+    background: #56ff56;
+    /* width: 92px; */
+    align-items: center;
+}
+.Title__Category {
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Title__Category__Text1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.Title__Category__Text2 {
+    font-size: 22px;
+}
+
+
+
+/*---------------------------MOBILE---------------------------------*/
+@media only screen and (max-width:739px){
+    label.MenuBar__Mobile {
+        width: 80%;
+    }
+    .Menu {
+        height: 10%;
+    }
+    
+    .Logo__Web {
+        width: 64px;
+        margin-left: 4%;
+    }
+    
+    label.Bar {
+        font-size: 25px;
+        height: 40px;
+        width: 40px;
+    }
+    .Menu__Web {
+        display: none;
+    }
+    .BackGround__Header {
+        width: 100%;
+        display: table;
+    }
+    
+    .decoration__Web {
+        text-align: center;
+        width: 90%;
+        /* display: block; */
+    }
+    .Content__Review {
+        text-align: center;
+        flex-direction: column;
+    }
+    
+    .Content1__Produce {flex-direction: column;/* width: 50%; */position: relative;/* height: 170px; */justify-content: center;align-items: center;}
+    
+    .Produce__Content1 {
+        height: 175px;
+        width: 300px;
+        margin: 3%;
+    }
+    
+    
+    .Inf__Produce__Content1 {
+        top: 75px;
+    }
+    
+    .Title__Content1 {
+        width: 99%;
+        padding: 0px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        border-style: none;
+    }
+    .Content2__Produce {
+        /* height: 314px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .Produce__Content2 {
+        margin: 12px 0px 12px 0px;
+        width: 300px;
+        height: 250px;
+    }
+    .Title__Content1 {
+        border-style: none;
+    }
+    .Text1__Content2 {
+        font-size: 45px;
+        font-weight: 600;
+    }
+    
+    .Text2__Content2 {
+        margin: 12px 0px 12px 0px;
+        font-size: 20px;
+    }
+    .Logo__Web.Logo__Web__scroll {
+        width: 67px;
+    }
+    .Menu.Menu__scroll {
+        height: 5%;
+    }
+    .Category__Produce__Content {
+        height: 210px;
+    }
+    .Category__Produces__Content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+@media only screen and (min-width:740px ) and (max-width:1023px){
+    .Category__Produce__Content {
+        height: 210px;
+    }
+    label.MenuBar__Mobile {
+        width: 60%;
+    }
+    .decoration__Web {
+        margin-left: 9%;
+    }
+    .Menu {
+        justify-content: space-around;
+        height: 10%;
+    }
+    
+    .Menu__Web {
+        font-size: 20px;
+    }
+    
+    .Logo__Web {width: 60px;}
+    
+    label.Bar {
+        height: 40px;
+        width: 40px;
+        font-size: 20px;
+    }
+    
+    .decoration__Web {
+        margin-left: 9%;
+    }
+    .Content__Review {
+        flex-direction: column;
+    }
+    
+    .Title__Content1 {
+        text-align: center;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        position: relative;
+        padding: 0px 0px 0px 0px;
+        align-items: center;
+    }
+    
+    .Text1__Content1 {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .Text2__Content1 {
+        font-size: 24px;
+        width: 60%;
+    }
+    
+    .Produce__Content1 {
+        height: 185px;
+        width: 20%;
+    }
+    
+    .Content1__Produce {
+        margin-bottom: 10px;
+        /* flex-wrap: wrap; */
+    }
+    .Content2__Review {
+        text-align: center;
+        flex-direction: column-reverse;
+    }
+    
+    .Title__Content2 {
+        padding: 0px;
+        width: 100%;
+        border: none;
+    }
+    
+    .Content2__Produce {
+        width: 100%;
+    }
+    
+    
+    .Produce__Content2 {
+        height: 190px;
+    }
+    
+    .Title__Content2 {
+        margin-top: 30px;
+        padding-bottom: 30px;
+    }
+    .Text1__Content2 {
+        font-size: 40px;
+        font-weight: 600;
+    }
+    
+    .Text2__Content2 {
+        font-size: 22px;
+    }
+    .Title__Content1 {
+        border-style: none;
+    }
+    
+}
+/*---------------------------------JQuery-------------------------------------*/
+.Menu.Menu__scroll {
+    height: 11%;
+    transition: 0.5s;
+    background: #000000eb;
+    z-index: 1;
+    position: fixed;
+    top: 0px;
+}
+.BackGround__Header.BackGround__Header__scroll {
+    transition: 0.5s;
+    position: relative;
+    top: 25%;
+}
+.Logo__Web__scroll {
+    transition: 0.5s;
+    width: 68px;
+}
+
+label.Bar__scroll {
+    transition: 0.5s;
+    font-size: 24px;
+    height: 40px;
+    width: 40px;
+}
+    </style>
+    <link href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </html>
+<body>
+    <div  class="Header" >
+        <Div class="Menu">
+            <div class="Logo__Web">
+            </div>
+            <div class="Menu__Web">
+                <div class="Menu__Content">
+                    <div class="Title__Menu">
+                        <a href="" class="Title">Home</a>
+                        <div class="Border__Title--Hover">
+    
+                        </div>
+                    </div>
+                    <div class="Title__Menu">
+                        <a href="" class="Title">Produce</a>
+                        <div class="Border__Title--Hover">
+    
+                        </div>
+                    </div>
+                    <div class="Title__Menu">
+                        <a href="" class="Title">About</a>
+                        <div class="Border__Title--Hover">
+    
+                        </div>
+                    </div>
+                    <div class="Title__Menu">
+                        <a href=""class="Title">Support</a>
+                        <div class="Border__Title--Hover">
+    
+                        </div>
+                    </div>
+                </div>    
+                </div>
+                <input type="checkbox" id="CheckBox__Menu__Mobile">
+                <label for="CheckBox__Menu__Mobile" class="Bar">
+                    <i class="fa-solid fa-bars"></i>
+                </label>
+                <label for="CheckBox__Menu__Mobile" id="Background__overLay__Moblie"></label>
+                <label  class="MenuBar__Mobile">
+                    <label for="CheckBox__Menu__Mobile"class="Bar__Close--Click">
+                        <i class="fa-solid fa-xmark"></i>
+                    </label>
+         
+                    <div class="MenuBar__Mobile__Content">
+                        <div class="topic__Mobile--choice">
+                            <div class="content__topic__Mobile">
+                                <a href="" class="topic__Mobile">Home</a>
+                                <div class="Border__Mobile--run"></div>
+                            </div>
+                            <div class="content__topic__Mobile">
+                                <a href="" class="topic__Mobile">Product</a>
+                                <div class="Border__Mobile--run"></div>
+                            </div>
+                            <div class="content__topic__Mobile">
+                                <a href="" class="topic__Mobile">Custom</a>
+                                <div class="Border__Mobile--run"></div>
+                            </div>
+                            <div class="content__topic__Mobile">
+                                <a href="" class="topic__Mobile">Credit</a>
+                                <div class="Border__Mobile--run"></div>
+                            </div>
+                            <div class="content__topic__Mobile">
+                                <a href="" class="topic__Mobile">Shopping Cart</a>
+                                <div class="Border__Mobile--run"></div>
+                            </div>
+                            <div class="content__topic__Mobile">
+                                <a href="" class="topic__Mobile">Logout</a>
+                                <div class="Border__Mobile--run"></div>
+                            </div>
+                    </div>
+                </div>
+                </label>
+        </Div>
+        <div class="BackGround__Header">
+            <h1 id="Welcome">
+                Welcome
+            </h1>
+            <div class="Line__BackGround__Header">
+
+            </div>
+            <div class="decoration__Web">
+                <div class="decoration1__Web" >
+                    Chúng tôi mang đến cho người dùng những trải nghiệm thú vị trong căn bếp của họ
+                </div>
+                <div class="decoration2__Web">
+                    Nấu ăn như một phương pháp khoa học giúp bạn giải tỏa căng thăng.
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="Content">
+            <div class="Content1__Decretion">
+                <div class="Content1__Tilte">
+                    Best Produce
+                </div>
+                <div class="Content__Review">
+                    <div data-aos="fade-right" class="Content1__Produce">
+                        <div class="Produce__Content1">
+                            <div class="Background__Content1">
+                                <a href="" class="see__Detail">
+                                    Xem chi tiet
+                                </a>
+                            </div>
+                            <div class="Inf__Produce__Content1">
+                                <div class="Name__Produce__Content1">
+                                    Nàng Monalisa
+                                </div>
+                                <div class="Date__PushProduce__Content1">
+                                    15/12/2021
+                                </div>
+                                <div class="Writter__Produce__Content1">
+                                    John Cena
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Produce__Content1">
+                            <div class="Background__Content1">
+                                <a href="" class="see__Detail">
+                                    Xem chi tiet
+                                </a>
+                            </div>
+                            <div class="Inf__Produce__Content1">
+                                <div class="Name__Produce__Content1">
+                                    Nàng Monalisa
+                                </div>
+                                <div class="Date__PushProduce__Content1">
+                                    15/12/2021
+                                </div>
+                                <div class="Writter__Produce__Content1">
+                                    John Cena
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Produce__Content1">
+                            <div class="Background__Content1">
+                                <a href="" class="see__Detail">
+                                    Xem chi tiet
+                                </a>
+                            </div>
+                            <div class="Inf__Produce__Content1">
+                                <div class="Name__Produce__Content1">
+                                    Nàng Monalisa
+                                </div>
+                                <div class="Date__PushProduce__Content1">
+                                    15/12/2021
+                                </div>
+                                <div class="Writter__Produce__Content1">
+                                    John Cena
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Produce__Content1">
+                            <div class="Background__Content1">
+                                <a href="" class="see__Detail">
+                                    Xem chi tiet
+                                </a>
+                            </div>
+                            <div class="Inf__Produce__Content1">
+                                <div class="Name__Produce__Content1">
+                                    Nàng Monalisa
+                                </div>
+                                <div class="Date__PushProduce__Content1">
+                                    15/12/2021
+                                </div>
+                                <div class="Writter__Produce__Content1">
+                                    John Cena
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="zoom-in" class="Title__Content1">
+                        <div class="Text1__Content1">
+                            Top Produce trending
+                        </div>
+                        <div class="Text2__Content1">
+                            Những món ăn được người dùng theo dõi và thực hiện nhiều nhất trong tuần qua
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="zoom-in" class="Bulkhead">
+                <div class="Bulkhead__Wall"></div>
+            </div>
+
+            <div class="Content2__Decretion">
+                <div class="Content2__Tilte">
+                    Best Produce
+                </div>
+                <div class="Content2__Review">
+                    <div data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom" class="Title__Content2">
+                        <div class="Text1__Content2">
+                            Top Produce trending
+                        </div>
+                        <div class="Text2__Content2">
+                            Những món ăn được người dùng theo dõi và thực hiện nhiều nhất trong tuần qua
+                        </div>
+                    </div>
+                    <div  class="Content2__Produce"
+                    data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
+                        <form action="/" method="POST">
+                            <% for(var i = 0; i < prop.length; i++) { %>
+                            <div class="Produce__Content2">
+                                <div class="Background__Content2">
+                                    <a href="" class="see__Detail2">
+                                        <%= prop[i].Ten_loai %>
+                                    </a>
+                                </div>
+                                <div class="Inf__Produce__Content2">
+                                    <div class="Name__Produce__Content2">
+                                        Nàng Monalisa
+                                    </div>
+                                    <div class="Date__PushProduce__Content2">
+                                        15/12/2021
+                                    </div>
+                                    <div class="Writter__Produce__Content2">
+                                        John Cena
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </form>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div data-aos="zoom-in" class="Bulkhead">
+                <div class="Bulkhead__Wall"></div>
+            </div>
+            <div class="Category__Content3">
+                <div class="Category__Content__Title">
+                    Category
+                </div>
+                <form action="/" method="POST">
+                    <div  class="Category__Produces__Content" data-aos="fade-up"
+                data-aos-duration="3000" >
+                <% for(var i = 0; i < topic.length; i++) { %>
+                    <div class="Category__Produce__Content">
+                          <div class="Background__overLay__Catetory">
+                          </div> 
+                          <div class="Inf__Category__Produce__Content">
+                              <div class="Name__Category__Produce">
+                                  <a href=" " class="Name__Category"><%= topic[i].Chu_de %></a>
+                              </div>
+                          </div>
+                    </div>
+                    <% } %>
+                </div>
+                </form>
+                
+        </div>
+        <div data-aos="zoom-in" class="Title__Category">
+            <div class="Title__Category__Text1">
+                Top Produce trending
+            </div>
+            <div class="Title__Category__Text2">
+                Những món ăn được người dùng theo dõi và thực hiện nhiều nhất trong tuần qua
+            </div>
+        </div>
+        <div data-aos="zoom-in" class="Bulkhead">
+            <div class="Bulkhead__Wall"></div>
+        </div>
+        <footer>
+            <div class="Header__Footer">
+                <div class="Content__Text__Footer1">
+                    <div class="Big__Content__Text__Footer1">
+                        Hệ thống cam kết
+                    </div>
+                    <div class="Small__Content__Text__Footer1">
+                        Trên trang này, bạn có thể tìm thấy rất nhiều công thức nấu các món Á, Âu, các loại bánh và đặc biệt là các món ăn Nhật. Đây chắc chắn là một địa chỉ lý tưởng cho những ai yêu mến ẩm thực Nhật Bản.
+                    </div>
+                </div>
+                <div class="Column__Content__Text">
+                    <div class="Content__Text__Footer2">
+                        <div class="Big__Content__Text__Footer2">
+                            Liên hệ quảng cáo
+                        </div>
+                        <div class="Small__Content__Text__Footer2">
+                            <h4>
+                                Nguyễn Phan Thanh Tiến
+                                SDT:0333185368
+                            </h4>
+                            <h4>
+                                Phan Thành Thanh Thủy
+                                SDT:0987973049
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="Content__Text__Footer3">
+                        <div class="Big__Content__Text__Footer3">
+                            Về chúng tôi
+                        </div>
+                        <div class="Small__Content__Text__Footer3">
+                            <a href="https://www.facebook.com/0333185368tien">
+                                Tài khoản hỗ trợ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script>
+            AOS.init();
+          </script>
+<script>
+    jQuery(document).ready(function(){
+    jQuery(window).scroll(function(){
+        if(jQuery(this).scrollTop()){
+            jQuery('.Menu').addClass('Menu__scroll');
+            jQuery('.BackGround__Header').addClass('BackGround__Header__scroll');
+            jQuery('.Logo__Web').addClass('Logo__Web__scroll');
+            jQuery('.Bar').addClass('Bar__scroll');
+        }
+        else{
+            jQuery('.Menu').removeClass('Menu__scroll');
+            jQuery('.BackGround__Header').removeClass('BackGround__Header__scroll');
+            jQuery('.Bar').removeClass('Bar__scroll');
+            jQuery('.Logo__Web').removeClass('Logo__Web__scroll');
+        }
+    });
+})
+</script>
+
+</body>
+

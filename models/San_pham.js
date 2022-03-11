@@ -30,6 +30,11 @@ const Production_Schema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
+    Luot_qt:{
+        type: Number,
+        required: true,
+    },
 });
 
 const Production_db = mongoose.model('San_Pham', Production_Schema);
