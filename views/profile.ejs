@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width">
+    <link href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" rel="stylesheet">
+    <style>
+        
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;@200;@300;@400;@500;6200;@700;@800;@900&display=swap');
+body{
+    font-family:'Poppins', sans-serif ;
+    background-image: url(./img/Trangcanhnhan2.jpeg);
+}
+.Title__Information {
+    margin-bottom: 40px;
+    font-size: 35px;
+    font-family: system-ui;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.Information {
+    justify-content: space-evenly;
+    display: flex;
+    width: 100%;
+}
+
+.img {
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    width: 20%;
+}
+
+.img__user {
+    height: 300px;
+    background: aliceblue;
+}
+
+input.Add__IMG {
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 12px;
+    width: 115px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    height: 32px;
+}
+.img__add {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    /* border-radius: 16px; */
+}
+
+.container {
+    position: relative;
+    background: #afa9a99a;
+    height: 579px;
+    margin: 30px;
+}
+
+.Information__User {
+    top: 12px;
+    font-size: 20px;
+    line-height: 45px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.Name__User {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.Email {
+    font-size: 19px;
+}
+input.submit__Hover {
+    transition: 0.4s;
+    box-shadow: 0px 0px 12px azure;
+    border-radius: 11px;
+    /* top: 40px; */
+    height: 30px;
+    width: 140px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: antiquewhite;
+    cursor: pointer;
+}
+
+.Live__Stream {
+    position: relative;
+    display: flex;
+    place-self: flex-end;
+    /* font-size: 17px; */
+    top: -5px;
+    /* border-radius: 6px; */
+}
+
+.Live__Stream a {
+    transition: 0.5s;
+    background: aliceblue;
+    text-decoration: auto;
+    color: black;
+    font-size: 13px;
+    padding: 5px;
+    height: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 140px;
+    justify-content: center;
+    border-radius: 11px;
+}
+.Link a {
+    text-decoration: auto;
+    color: black;
+}
+
+.Change__Page {
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    top: 106px;
+}
+
+input.submit__Hover:hover {
+    font-size: 15px;
+    width: 140px;
+    border-color: aqua;
+    box-shadow: 0px 0px 12px #edfffc;
+    background: #00dbff;
+    color: white;
+}
+
+.Live__Stream a:hover {
+    color: white;
+    font-size: 17px;
+    background: #6fdcfd;
+    /* width: 130px; */
+    box-shadow: 0px 0px 12px #d6dad7;
+}
+.another__Information__user {
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+}
+input.Add__IMG:hover {
+    border-color: #7efcfc;
+    color: white;
+    border-width: 1px;
+    box-shadow: 0px 0px 14px #2fffcb;
+    font-size: 15px;
+    background: #6fdcfd;
+}
+.Produce__Favourite {
+    /* background: #0000002e; */
+    width: 100%;
+    height: 410px;
+    display: flex;
+}
+.ID__User {
+    font-weight: 700;
+}
+.Produces__Favourite {
+    overflow-y: scroll;
+    margin-top: 8px;
+    background: #0000002e;
+    width: 40%;
+}
+
+.Produce__Favourite {
+    position: relative;
+    padding-top: 0px;
+    /* margin-top: 13px; */
+}
+
+.Produce__Img__Favourite {
+    background: antiquewhite;
+    width: 70px;
+    height: 50px;
+    margin: 13px;
+}
+
+.Produce__content__Favourite {
+    color: aliceblue;
+    margin: 12px;
+    line-height: 27px;
+    font-size: 15px;
+}
+button {
+    transition: 0.5s;
+    font-size: 12px;
+    height: 40px;
+    width: 125px;
+    background: azure;
+    border-radius: 19px;
+    border-style: solid;
+    border-color: aliceblue;
+    cursor: pointer;
+}
+
+button:hover {
+    border-color: aquamarine;
+    width: 150px;
+    font-size: 15px;
+    background: #68ffcc;
+    box-shadow: 0px 0px 10px antiquewhite;
+    color: white;
+}
+    </style>
+</html>
+<body>
+    <div class="container">
+            <div class="Title__Information">
+                Thông tin cá nhân
+            </div>
+            <div class="Information">
+                <div class="img">
+                    <div class="img__user">
+                        
+                    </div>
+                    <div class="img__add">
+                        <button ><i class="fa-light fa-plus"></i> Thêm ảnh</button>
+                    </div>
+                </div>
+                <div class="Information__User">
+                        <div class="Name__User">
+                           Nguyễn Phan Thanh Tiến
+                        </div>
+                        <div class="another__Information__user">
+                            <div class="Age__User">Tuổi: 21</div>
+                            <div class="Sex__User">Giới tính: Nam</div>
+                        </div>
+                        <div class="Email">
+                            ThanhTienDarkness@gmail.com
+                    </div>
+                    <div class="ID__User">
+                        Id: 1811062652
+                    </div>
+                    <div class="Link">
+                        <a href="https://www.facebook.com/0333185368tien">Link mạng xã hội</a>
+                    </div>
+                    <div class="Change__Page">
+                        <div class="submit">
+                            <input type="submit" class="submit__Hover" value="Sửa thông tin">
+                        </div>
+                        <div class="Live__Stream">
+                            <a href="">Live stream</a> 
+                         </div>
+                    </div>
+                </div>
+                <div class="Produces__Favourite">
+                    <div class="Produce__Favourite">
+                        <div class="Produce__Img__Favourite">
+    
+                        </div>
+                        <div class="Produce__content__Favourite">
+                            <div class="Produce__Title">
+                                Gà xào hoàng kim
+                            </div>
+                            <div class="User__Push">
+                                Nguyễn Phan Thanh Tiến
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        
+    </div>
+</body>

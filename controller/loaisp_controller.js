@@ -67,6 +67,6 @@ exports.delete_new_produce_type = (req,res) =>{
                 res.redirect('/adminpage/producttype');
             }
         }).catch(err =>{
-            res.status(500).send({message: err.message || "Da co loi xay ra, khong the cap nhat"});
+            res.status(500).send({message: err.message || "Da co loi xay ra, khong the xoa"});
         });
 }

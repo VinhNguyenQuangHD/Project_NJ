@@ -6,6 +6,7 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const User = require("./models/User");
+const Infor_s = require("./models/Infor");
 const user_routes = require('./routes/user.routes');
 const bcrypt = require("bcryptjs");
 const morgan = require("morgan");
@@ -28,7 +29,7 @@ initializePassport(
   async (id) => {
     const userFound = await User.findOne({ _id: id });
     return userFound;
-  }
+  },
 );
 
 //Xac dinh view qua form
@@ -61,7 +62,7 @@ app.get("/", checkAuthenticated, (req, res) => {
 
   axios.all(urls.map((url) => axios.get(url))).then(
     axios.spread((resp,resp2) =>{
-      res.render("index", {topic: resp.data, prop: resp2.data});
+      res.render("index", {topic: resp.data, prop: resp2.data, email: req.user.email});
     })
   );
 
@@ -93,6 +94,8 @@ app.post(
 );
 
 //Chuc nang dang ky
+
+var User_Detail = require('../Project_NJ/models/Infor');
 app.post("/register", checkNotAuthenticated, async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email });
    if (userFound) {
@@ -107,7 +110,17 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
         password: hashedPassword,
       });
 
+      const user_infor = new User_Detail({
+        email: req.body.email,
+        Code_name: req.body.name,
+        ages: 0,
+        Gender: 'Unknown',
+        Social_link: 'Unknown',
+
+      });
+
       await user.save();
+      await user_infor.save(user_infor);
       res.redirect("/login");
     } catch (error) {
       console.log(error);
@@ -116,11 +129,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   }
 });
 
-//Chuc nang Log Out
-app.delete("/logout", (req, res) => {
-  req.logOut();
-  res.redirect("/login");
-});
 
 //Ket noi voi MongoDB
 mongoose

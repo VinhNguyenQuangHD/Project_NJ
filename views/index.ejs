@@ -1049,7 +1049,7 @@ label.Bar__scroll {
                         </div>
                     </div>
                     <div class="Title__Menu">
-                        <a href=""class="Title">Profile</a>
+                        <a href="/profile/?email=<%= email %>"class="Title">Profile</a>
                         <div class="Border__Title--Hover">
     
                         </div>
@@ -1061,7 +1061,9 @@ label.Bar__scroll {
                         </div>
                     </div>
                     <div class="Title__Menu">
-                        <a href=""class="Title">Logout</a>
+                        <form action="/logout?_method=DELETE" method="POST">
+                        <button class="Title">Logout</button>
+                    </form>
                         <div class="Border__Title--Hover">
     
                         </div>

@@ -4,6 +4,7 @@ const controller1 = require('..//controller/chude_controller');
 const controller2 = require('..//controller/loaisp_controller');
 const routes = express.Router();
 const axios = require('axios');
+const { db } = require('../models/San_pham');
 
 //Quan ly thong tin user
 routes.get('/adminpage', (req,res) =>{
@@ -16,6 +17,11 @@ routes.get('/adminpage', (req,res) =>{
 
 });
 
+routes.delete("/logout", (req, res) => {
+    req.logOut();
+    res.redirect("/login");
+});
+
 routes.get('/adminpage/create', (req,res) =>{
     res.render("create");
 });
@@ -26,6 +32,10 @@ routes.get('/adminpage/update', (req,res) =>{
     }).catch(err => {
         res.send(err);
     })
+});
+
+routes.get('/profile', (req,res) =>{
+    res.render("profile");
 });
 
 routes.post('/api/users', controller.create );
