@@ -26,12 +26,22 @@ const Production_Schema = new mongoose.Schema({
         required: true,
     },
 
-    MoTaSP:{
+    NguyenLieu:{
         type: String,
         required: true,
     },
 
-    Luot_qt:{
+    CachLam:{
+        type: String,
+        required: true,
+    },
+
+    Luot_theo_doi:{
+        type: Number,
+        required: true,
+    },
+
+    DanhGia:{
         type: Number,
         required: true,
     },
