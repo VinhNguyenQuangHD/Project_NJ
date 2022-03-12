@@ -50,8 +50,6 @@ app.use(methodOverride("_method"));
 app.use(express.static("public"));
 //app.use('/', user_routes);
 app.use('/', require('../Project_NJ/routes/crud_router'));
-app.use('/', require('../Project_NJ/routes/chude_router'));
-app.use('/', require('../Project_NJ/routes/loaisp_router'));
 
 
 const axios = require('axios');
