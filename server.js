@@ -10,6 +10,8 @@ const Infor_s = require("./models/Infor");
 const user_routes = require('./routes/user.routes');
 const bcrypt = require("bcryptjs");
 const morgan = require("morgan");
+const web_rtc = require('webrtc');
+
 const {
   checkAuthenticated,
   checkNotAuthenticated,
@@ -18,6 +20,10 @@ const body_parser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+const server_sv = require('http').Server(app);
+const io = require('socket.io')(server_sv);
+const {v4: roomIDS} = require('uuid');
 
 const initializePassport = require("./passport-config");
 initializePassport(
@@ -129,6 +135,10 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   }
 });
 
+
+app.get("/live-stream", (req,res) =>{
+  res.render("livestream");
+});
 
 //Ket noi voi MongoDB
 mongoose
