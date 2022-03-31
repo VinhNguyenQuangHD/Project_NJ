@@ -12,6 +12,7 @@ const bcrypt = require("bcryptjs");
 const morgan = require("morgan");
 const web_rtc = require('webrtc');
 
+
 const {
   checkAuthenticated,
   checkNotAuthenticated,
@@ -20,10 +21,10 @@ const body_parser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const server_connection = require('http').Server(app);
+const io = require('socket.io')(server_connection);
 
-const server_sv = require('http').Server(app);
-const io = require('socket.io')(server_sv);
-const {v4: roomIDS} = require('uuid');
+
 
 const initializePassport = require("./passport-config");
 initializePassport(
@@ -41,6 +42,7 @@ initializePassport(
 //Xac dinh view qua form
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use(body_parser.json());
 app.use(body_parser.urlencoded({ extended: true }));
 app.use(flash());
 app.use(
@@ -135,10 +137,60 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   }
 });
 
+//Ket noi
 
 app.get("/live-stream", (req,res) =>{
   res.render("livestream");
+})
+app.get("/viewer-side", (req,res) =>{
+  res.render("viewer_screne");
+})
+
+/*app.post('/consumer', async ({ body }, res) => {
+  const peer = new web_rtc.RTCPeerConnection({
+      iceServers: [
+          {
+              urls: "stun:stun.stunprotocol.org"
+          }
+      ]
+  });
+  const desc = new webrtc.RTCSessionDescription(body.sdp);
+  await peer.setRemoteDescription(desc);
+  senderStream.getTracks().forEach(track => peer.addTrack(track, senderStream));
+  const answer = await peer.createAnswer();
+  await peer.setLocalDescription(answer);
+  const payload = {
+      sdp: peer.localDescription
+  }
+
+  res.json(payload);
 });
+
+
+app.post('/broadcast', async ({ body }, res) => {
+  const peer = new web_rtc.RTCPeerConnection({
+      iceServers: [
+          {
+              urls: "stun:stun.stunprotocol.org"
+          }
+      ]
+  });
+  peer.ontrack = (e) => handleTrackEvent(e, peer);
+  const desc = new webrtc.RTCSessionDescription(body.sdp);
+  await peer.setRemoteDescription(desc);
+  const answer = await peer.createAnswer();
+  await peer.setLocalDescription(answer);
+  const payload = {
+      sdp: peer.localDescription
+  }
+
+  res.json(payload);
+});
+
+function handleTrackEvent(e, peer) {
+  senderStream = e.streams[0];
+};*/
+
 
 //Ket noi voi MongoDB
 mongoose
