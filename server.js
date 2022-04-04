@@ -10,7 +10,7 @@ const Infor_s = require("./models/Infor");
 const user_routes = require('./routes/user.routes');
 const bcrypt = require("bcryptjs");
 const morgan = require("morgan");
-const web_rtc = require('webrtc');
+const web_rtc = require('wrtc');
 
 
 const {
@@ -70,7 +70,7 @@ app.get("/", checkAuthenticated, (req, res) => {
 
   axios.all(urls.map((url) => axios.get(url))).then(
     axios.spread((resp,resp2) =>{
-      res.render("index", {topic: resp.data, prop: resp2.data, email: req.user.email});
+      res.render("index", {topic: resp.data, prop: resp2.data, id: req.user._id});
     })
   );
 
@@ -116,19 +116,14 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: hashedPassword,
-      });
-
-      const user_infor = new User_Detail({
-        email: req.body.email,
-        Code_name: req.body.name,
+        codename: req.body.name,
         ages: 0,
-        Gender: 'Unknown',
-        Social_link: 'Unknown',
+        gender: 'Unknown',
+        sociallink: 'Unknown',
 
       });
 
       await user.save();
-      await user_infor.save(user_infor);
       res.redirect("/login");
     } catch (error) {
       console.log(error);
@@ -146,7 +141,7 @@ app.get("/viewer-side", (req,res) =>{
   res.render("viewer_screne");
 })
 
-/*app.post('/consumer', async ({ body }, res) => {
+app.post('/consumer', async ({ body }, res) => {
   const peer = new web_rtc.RTCPeerConnection({
       iceServers: [
           {
@@ -189,12 +184,12 @@ app.post('/broadcast', async ({ body }, res) => {
 
 function handleTrackEvent(e, peer) {
   senderStream = e.streams[0];
-};*/
+};
 
 
 //Ket noi voi MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/auth", {
+  .connect("mongodb://0.0.0.0:27017/auth", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })

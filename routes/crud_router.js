@@ -2,6 +2,7 @@ const express = require('express');
 const controller = require('..//controller/controller');
 const controller1 = require('..//controller/chude_controller');
 const controller2 = require('..//controller/loaisp_controller');
+const controller3 = require('../controller/user_controller');
 const routes = express.Router();
 const axios = require('axios');
 const { db } = require('../models/San_pham');
@@ -34,9 +35,7 @@ routes.get('/adminpage/update', (req,res) =>{
     })
 });
 
-routes.get('/profile', (req,res) =>{
-    res.render("profile");
-});
+
 
 routes.post('/api/users', controller.create );
 routes.get('/api/users', controller.read );
@@ -99,5 +98,44 @@ routes.post('/api/protypes', controller2.create_new_produce_type );
 routes.get('/api/protypes', controller2.read_new_produce_type );
 routes.put('/api/protypes/:id', controller2.update_new_produce_type );
 routes.delete('/api/protypes/:id', controller2.delete_new_produce_type );
+
+
+//Quan ly thong tin nguoi dung
+
+/*routes.get('/profile', (req,res) =>{
+    res.render("profile");
+});*/
+
+routes.get('/profile/users', (req,res) =>{
+    axios.get('http://localhost:8080/api/userss').then(function(response){
+        console.log(response);
+        res.render('admin_control_center', {protypes: response.data});
+
+    }).catch(err => {
+        res.send(err);
+    })
+})
+
+routes.get('/profile/users-update', (req,res) =>{
+    axios.get('http://localhost:8080/api/userss', {params: {id: req.query.id}}).then(function(usersdata){
+        res.render('profile_update',{userss:usersdata.data});
+    }).catch(err =>{
+        res.send(err);
+    })
+})
+
+routes.get('/profile', (req,res) =>{
+    axios.get('http://localhost:8080/api/userss').then(function(response){
+        console.log(response);
+        res.render('profile_manager',{users:response.data});
+    }).catch(err => {
+        res.send(err);
+    })
+
+});
+
+routes.get('/api/userss',controller3.user_read);
+routes.put('/api/userss/:id', controller3.user_update);
+routes.delete('/api/userss/:id', controller3.user_delete);
 
 module.exports = routes;
