@@ -6,15 +6,14 @@ exports.create_new_production = (req,res) =>{
         res.status(404).send({message: "Co loi xay ra !!"});
     }else{
         const new_product = new production({
-            id_sanpham: req.body.idsanpham,
-            Ma_Loai: req.body.maloai,
-            TenSP: req.body.tensp,
-            DonGia: req.body.idsanpham,
-            Hinh: req.body.hinh,
-            NguyenLieu: req.body.nguyenlieu,
-            CachLam: req.body.cachlam,
-            Luot_theo_doi: req.body.luottheodoi,
-            DanhGia: req.body.danhgia,
+            idsanpham: req.body.idsanpham,
+            maloai: req.body.maloai,
+            tensp: req.body.tensp,
+            dongia: req.body.dongia,
+            hinh: req.body.hinh,
+            noidung: req.body.noidung,
+            luottheodoi: req.body.luottheodoi,
+            danhgia: req.body.danhgia,
         });
 
         new_product.save(new_product).then(data =>{

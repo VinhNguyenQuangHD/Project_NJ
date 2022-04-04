@@ -1,47 +1,42 @@
 const mongoose = require('mongoose');
 
 const Production_Schema = new mongoose.Schema({
-    id_sanpham:{
+    idsanpham:{
         type: Number,
         required: true,
     },
 
-    Ma_Loai:{
+    maloai:{
         type: Number,
         required: true,
     },
 
-    TenSP:{
+    tensp:{
         type: String,
         required: true,
     },
 
-    DonGia:{
+    dongia:{
         type: Number,
         required: true,
     },
 
-    Hinh:{
+    hinh:{
         type: String,
         required: true,
     },
 
-    NguyenLieu:{
+    noidung:{
         type: String,
-        required: true,
+        require: true,
     },
 
-    CachLam:{
-        type: String,
-        required: true,
-    },
-
-    Luot_theo_doi:{
+    luottheodoi:{
         type: Number,
         required: true,
     },
 
-    DanhGia:{
+    danhgia:{
         type: Number,
         required: true,
     },
