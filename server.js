@@ -66,11 +66,11 @@ const controller = require('../Project_NJ/controller/chude_controller');
 const controller1 = require('../Project_NJ/controller/loaisp_controller');
 
 app.get("/", checkAuthenticated, (req, res) => {
-  let urls = ['http://localhost:8080/api/topic', 'http://localhost:8080/api/protype'];
+  let urls = ['http://localhost:8080/api/topic', 'http://localhost:8080/api/protype','http://localhost:8080/api/production'];
 
   axios.all(urls.map((url) => axios.get(url))).then(
-    axios.spread((resp,resp2) =>{
-      res.render("index", {topic: resp.data, prop: resp2.data, id: req.user._id});
+    axios.spread((resp,resp2, resp3) =>{
+      res.render("index", {topic: resp.data, prop: resp2.data, prod: resp3.data, id: req.user._id});
     })
   );
 
@@ -78,6 +78,9 @@ app.get("/", checkAuthenticated, (req, res) => {
 
 app.get('/api/topic', controller.topic_read );
 app.get('/api/protype', controller1.read_new_produce_type );
+
+
+
 
 app.get("/register", checkNotAuthenticated, (req, res) => {
   res.render("register");
@@ -87,6 +90,8 @@ app.get("/register", checkNotAuthenticated, (req, res) => {
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login");
 });
+
+
 
 
 //Chuc nang dang nhap

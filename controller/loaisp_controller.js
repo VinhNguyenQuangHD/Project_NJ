@@ -44,15 +44,15 @@ exports.update_new_produce_type = (req,res) =>{
         });
     }else{
         const id = req.params.id;
-        loai_sp_db.findByIdAndUpdate(id,req.body, {useFindAndModify: false}).then(data =>{
+        loai_sp_db.findByIdAndUpdate(id,req.body,{useFindAndModify: false}).then(data =>{
             if(!data){
                 res.status(404).send({message: "Form phai duoc lap day"});
             }else{
                 res.send(data);
-                res.redirect('/adminpage/producttype');
+                res.redirect('/adminpage/protype');
             }
         }).catch(err =>{
-            res.status(500).send({message: err.message || "Da co loi xay ra, khong the cap nhat"});
+            //res.status(500).send({message: err.message || "Da co loi xay ra, khong the cap nhat"});
         });
     }
 }
@@ -63,8 +63,7 @@ exports.delete_new_produce_type = (req,res) =>{
             if(!data){
                 res.status(404).send({message: "Form phai duoc lap day"});
             }else{
-                res.send(data);
-                res.redirect('/adminpage/producttype');
+                res.send({message: "Loai sp nay da bi xoa !!!"});
             }
         }).catch(err =>{
             res.status(500).send({message: err.message || "Da co loi xay ra, khong the xoa"});

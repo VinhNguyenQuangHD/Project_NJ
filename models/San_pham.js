@@ -31,15 +31,6 @@ const Production_Schema = new mongoose.Schema({
         require: true,
     },
 
-    luottheodoi:{
-        type: Number,
-        required: true,
-    },
-
-    danhgia:{
-        type: Number,
-        required: true,
-    },
 });
 
 const Production_db = mongoose.model('San_Pham', Production_Schema);

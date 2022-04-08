@@ -256,7 +256,7 @@ table{
             <div class="container">
                 <div class="box-nav d-flex justify-between">
                    <div class="filter">
-                       <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
+                       <a href="/adminpage/protype"><i class="fas fa-angle-double-left"></i> All Users</a>
                    </div>
                 </div>
                 <div class="form-title text-center">
@@ -269,11 +269,11 @@ table{
                 <div class="form-group">
                     <label for="name" class="text-light"> Ma loai san pham</label>
                     <input type="hidden" name="id" value="<%= protypes._id %>">
-                    <input type="text" name="idchude" value="<%= protypes.Ma_Loai %>" placeholder="Nhap ma loai san pham day">
+                    <input type="text" name="Ma_Loai" value="<%= protypes.Ma_Loai %>" placeholder="Nhap ma loai san pham day">
                 </div>
                 <div class="form-group">
                     <label for="Email" class="text-light">Ten loai san pham</label>
-                    <input type="text" name="tenchude" value="<%= protypes.Ten_loai %>" placeholder="Nhap noi dung o day">
+                    <input type="text" name="Ten_loai" value="<%= protypes.Ten_loai %>" placeholder="Nhap noi dung o day">
                 </div>
 
                 
@@ -301,7 +301,7 @@ table{
 
 
                 var request = {
-                    "url" : `http://localhost:3000/api/users/${data.id}`,
+                    "url" : `http://localhost:8080/api/protypes/${data.id}`,
                     "method" : "PUT",
                     "data" : data
                 }

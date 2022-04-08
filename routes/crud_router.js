@@ -3,9 +3,11 @@ const controller = require('..//controller/controller');
 const controller1 = require('..//controller/chude_controller');
 const controller2 = require('..//controller/loaisp_controller');
 const controller3 = require('../controller/user_controller');
+const controller4 = require('../controller/sanpham_controller');
 const routes = express.Router();
 const axios = require('axios');
 const { db } = require('../models/San_pham');
+const { route } = require('./user.routes');
 
 //Quan ly thong tin user
 routes.get('/adminpage', (req,res) =>{
@@ -88,7 +90,7 @@ routes.get('/adminpage/protype/procreate', (req,res) =>{
 
 routes.get('/adminpage/protype/proupdate', (req,res) =>{
     axios.get('http://localhost:8080/api/protypes', {params: {id: req.query.id}}).then(function(userdata){
-        res.render('admin_loaisp_update',{protypes:userdata.data});
+        res.render('admin_loaisp_update',{ protypes:userdata.data });
     }).catch(err => {
         res.send(err);
     });
@@ -102,9 +104,9 @@ routes.delete('/api/protypes/:id', controller2.delete_new_produce_type );
 
 //Quan ly thong tin nguoi dung
 
-/*routes.get('/profile', (req,res) =>{
+routes.get('/profile', (req,res) =>{
     res.render("profile");
-});*/
+});
 
 routes.get('/profile/users', (req,res) =>{
     axios.get('http://localhost:8080/api/userss').then(function(response){
@@ -124,7 +126,7 @@ routes.get('/profile/users-update', (req,res) =>{
     })
 })
 
-routes.get('/profile', (req,res) =>{
+/*routes.get('/profile', (req,res) =>{
     axios.get('http://localhost:8080/api/userss').then(function(response){
         console.log(response);
         res.render('profile_manager',{users:response.data});
@@ -132,10 +134,32 @@ routes.get('/profile', (req,res) =>{
         res.send(err);
     })
 
-});
+});*/
 
 routes.get('/api/userss',controller3.user_read);
 routes.put('/api/userss/:id', controller3.user_update);
 routes.delete('/api/userss/:id', controller3.user_delete);
+
+
+//Them san pham:
+
+routes.get('/production' , (req,res) =>{
+    res.render("production");
+})
+
+routes.get('/production/view-production', (res,req) =>{
+    axios.get('http://localhost:8080/api/productions',{ params: {id: req.query.id}}).then(function(prod){
+        res.render('production_view',{prods: prod.data});
+    }).catch(err => {
+        res.send(err);
+    })
+})
+
+
+routes.post('/api/production', controller4.create_new_production);
+routes.get('/api/production',controller4.read_all_production);
+routes.put('/api/production/:id', controller4.update_current_production);
+routes.put('/api/productions/:id', controller4.find_curent_id);
+routes.delete('/api/production/:id', controller4.delete_current_production);
 
 module.exports = routes;

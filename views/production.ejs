@@ -9,7 +9,8 @@
 <body>
     <h1>Add new product</h1>
     <h4>ID Product:</h4>
-    <input type="text" name="idsanpham" placeholder="Nhap vao id san pham ?">
+    <form action="/api/production" method="post" id="add_production">
+        <input type="text" name="idsanpham" placeholder="Nhap vao id san pham ?">
 
     <h4>Product type:</h4>
     <input type="text" name="maloai" placeholder="Nhap vao ma san pham ?">
@@ -25,5 +26,16 @@
 
     <h4>Description</h4>
     <input type="text" name="noidung" placeholder="Nhap vao noi dung san pham ?">
+
+    <button type="submit" class="btn text-dark update">Save</button>
+    </form>
+    
+
+    <script>
+        //Thong bao nhap user thanh cong
+        $("#add_production").submit(function(event){
+            alert("Production Inserted Successfully!");
+        })
+    </script>
 </body>
 </html>

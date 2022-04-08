@@ -12,8 +12,6 @@ exports.create_new_production = (req,res) =>{
             dongia: req.body.dongia,
             hinh: req.body.hinh,
             noidung: req.body.noidung,
-            luottheodoi: req.body.luottheodoi,
-            danhgia: req.body.danhgia,
         });
 
         new_product.save(new_product).then(data =>{
@@ -70,5 +68,16 @@ exports.delete_current_production = (req,res) =>{
             }
         }).catch(err =>{
             res.status(500).send({message: err.message || "Khong the xoa du lieu"});
+        })
+}
+
+exports.find_curent_id = (req,res) =>{
+    const prodct_id = req.params.id;
+        production.findById(prodct_id,req.body,{useFindAndModify: false} ).then(data =>{
+            if(!data){
+                res.status(404).send({message: "Da co loi xay ra"});
+            }else{
+                res.send(data);
+            }
         })
 }
