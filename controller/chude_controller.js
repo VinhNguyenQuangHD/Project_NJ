@@ -47,7 +47,7 @@ exports.topic_update = (req,res) =>{
         res.status(400).send({message: "Form khong duoc de trong"}); 
         return;
     }else{
-        const id = req.param.id;
+        const id = req.params.id;
         chude_db.findByIdAndUpdate(id, req.body, {useFindAndModify: false}).then(data =>{
             if(!data){
                 res.status(404).send({message: `Khong the cap nhat chu de cua id ${id}`});
@@ -56,7 +56,7 @@ exports.topic_update = (req,res) =>{
                 res.redirect('/adminpage/topics');
             }
         }).catch(err =>{
-            res.status(500).send({message : err.message || "Co loi xay ra"});
+            //res.status(500).send({message : err.message || "Co loi xay ra"});
         });}
 }
 
@@ -71,17 +71,4 @@ exports.topic_delete = (req,res) =>{
         }).catch(err =>{
             res.status(500).send({message : err.message || "Co loi xay ra"});
         });
-}
-
-var MongoDb = require('mongodb')
-var mongodb_url = "mongodb://0.0.0.0:27017/";
-
-exports.findProductionByTopicID = (req,res) =>{
-    const idsanpham = req.param.idsanpham;
-    MongoDb.connect(mongodb_url,function(err,db){
-        if (err) throw error;
-        var data = db.db("auth");
-        data.collection("san_phams").find({}, {projection: {_id:0  ,idsanpham:idsanpham} })
-    })
-
 }

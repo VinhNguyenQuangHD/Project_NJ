@@ -6,6 +6,7 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const User = require("./models/User");
+const SanPham = require("./models/San_pham");
 const Infor_s = require("./models/Infor");
 const user_routes = require('./routes/user.routes');
 const bcrypt = require("bcryptjs");
@@ -23,7 +24,7 @@ const body_parser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const server_connection = require('http').Server(app);
-const io = require('socket.io')(server_connection);
+const io = require('socket.io')();
 
 
 
@@ -138,13 +139,23 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   }
 });
 
-//Ket noi
 
+app.get('/topic-finding',  (req,res) => {
+  axios.get('http://localhost:8080/api/production').then(async function(){
+    const finding = await SanPham.find({idsanpham: req.body.idsanpham}).then(data =>{
+      res.render('topic_detail', {topics: finding.data});
+    }) 
+  })
+  
+})
+
+
+//Ket noi
 app.get("/live-stream", (req,res) =>{
   res.render("livestream");
 })
 app.get("/viewer-side", (req,res) =>{
-  //res.sendFile(path.join(__dirname+ "viewer_screne"));
+
   res.render("viewer_screne");
 })
 
@@ -190,13 +201,13 @@ app.post('/broadcast', async ({ body }, res) => {
 
   //Chat giua nhung nguoi xem voi nhau
 //Chua chat duoc
-io.on('connection', function(socket) {
+/*io.on('connection', function(socket) {
   console.log("Chat jointed")
 
   socket.on('send', function(data) {
     io.emit('send')
   })
-})
+})*/
 });
 
 

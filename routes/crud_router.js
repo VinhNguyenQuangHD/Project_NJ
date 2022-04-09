@@ -46,7 +46,7 @@ routes.delete('/api/users/:id', controller.delete );
 
 //Quan ly chu de 
 routes.get('/adminpage/topics', (req,res) =>{
-    axios.get('http://localhost:8080/api/topic').then(function(response){
+    axios.get('http://localhost:8080/api/topics').then(function(response){
         console.log(response);
         res.render('admin_chude', { topic: response.data});
     }).catch(err =>{
@@ -60,17 +60,17 @@ routes.get('/adminpage/topics/createnewtopic', (req,res) =>{
 });
 
 routes.get('/adminpage/topics/updatetopic', (req,res) =>{
-    axios.get('http://localhost:8080/api/topic', {params: {id: req.query.id}}).then(function(topicdata){
+    axios.get('http://localhost:8080/api/topics', {params: {id: req.query.id}}).then(function(topicdata){
         res.render("admin_chude_update", {topic: topicdata.data});
     }).catch(err =>{
         res.send(err);
     })
 })
 
-routes.post('/api/topic', controller1.topic_create );
-routes.get('/api/topic', controller1.topic_read );
-routes.put('/api/topic/:id', controller1.topic_update );
-routes.delete('/api/topic/:id', controller1.topic_delete );
+routes.post('/api/topics', controller1.topic_create );
+routes.get('/api/topics', controller1.topic_read );
+routes.put('/api/topics/:id', controller1.topic_update );
+routes.delete('/api/topics/:id', controller1.topic_delete );
 
 
 //Quan ly loai san pham
