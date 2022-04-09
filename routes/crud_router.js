@@ -155,7 +155,6 @@ routes.get('/view-production', (req,res) =>{
     })
 });
 
-
 routes.post('/api/production', controller4.create_new_production);
 routes.get('/api/production',controller4.read_all_production);
 routes.put('/api/production/:id', controller4.update_current_production);

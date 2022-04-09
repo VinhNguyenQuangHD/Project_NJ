@@ -5,27 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Production</title>
+    <style>
+        body {background-image: URL(https://images.pexels.com/photos/6395415/pexels-photo-6395415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);height: 100vh;display: flex;flex-direction: column;margin: 0px;box-sizing: border-box;align-items: center;width: 100%;}
+        form#add_production {height: 78vh;position: relative;padding: 22px;align-items: flex-start;width: 40vw;display: flex;flex-direction: column;background: #ffffff66;border-radius: 9px;box-shadow: 0px 2px 9px white;}
+
+h4 {position: relative;font-size: 1.2rem;margin-bottom: 6px;margin-top: 2px;top: 8px;}
+
+input.Input__Create__Product {outline: none;padding-left: 20px;background: none;width: 96%;height: 40px;border: none;font-size: 16px;border-bottom: solid 1px;transition: 0.5s;border-color: azure;}
+
+button.btn.text-dark.update {top: 88%;position: absolute;background: #7cd9be;font-size: 18px;padding: 10px;border: none;cursor: pointer;width: 90px;box-sizing: content-box;color: white;/* border-color: #35a780; */box-shadow: 2px 3px 9px white;border-radius: 1px;left: 71%;transition: 0.3s;}
+
+button.btn.text-dark.update:hover {box-shadow: 2px 3px 9px black;background: #6cdbed;border-radius: 11px;transform: translateY(-5px);}
+
+h1 {color: aliceblue;font-style: oblique;text-shadow: 0px 2px 5px antiquewhite;}
+label {transition: 1s;position: relative;width: 0%;height: 2px;background: aquamarine;}
+input#idsanpham:focus ~ label#idsanpham--Line{
+    width: 100%;
+}
+input#maloai:focus ~ label#maloai--Line{
+    width: 100%;
+}
+input#tensp:focus ~ label#tensp--Line{
+    width: 100%;
+}
+
+input#dongia:focus ~ label#dongia--Line{
+    width: 100%;
+}
+
+input#hinh:focus ~ label#hinh--Line{
+    width: 100%;
+}
+
+input#noidung:focus ~ label#noidung--Line{
+    width: 100%;
+}
+.Input__Create__Product::placeholder{
+    color:rgba(255, 255, 255, 0.527);
+}
+input.Input__Create__Product:focus {border-color: #ffffff00;}
+
+
+    </style>
 </head>
 <body>
     <h1>Add new product</h1>
-    <h4>ID Product:</h4>
     <form action="/api/production" method="post" id="add_production">
-        <input type="text" name="idsanpham" placeholder="Nhap vao id san pham ?">
-
+    <h4>ID Product:</h4>
+    <input type="text" name="idsanpham" id="idsanpham" class="Input__Create__Product" placeholder="Nhap vao id san pham ?">
+    <label id="idsanpham--Line" for="idsanpham"></label>
     <h4>Product type:</h4>
-    <input type="text" name="maloai" placeholder="Nhap vao ma san pham ?">
-
+    <input type="text" name="maloai" id="maloai" class="Input__Create__Product" placeholder="Nhap vao ma san pham ?">
+    <label id="maloai--Line" for="maloai"></label>
     <h4>Product name:</h4>
-    <input type="text" name="tensp" placeholder="Nhap vao ten san pham ?">
+    <input type="text" name="tensp" id="tensp" class="Input__Create__Product" placeholder="Nhap vao ten san pham ?">
+    <label id="tensp--Line" for="tensp"></label>
 
     <h4>Price:</h4>
-    <input type="text" name="dongia" placeholder="Nhap vao gia san pham ?">
+    <input type="text" name="dongia" id="dongia" class="Input__Create__Product" placeholder="Nhap vao gia san pham ?">
+    <label id="dongia--Line" for="dongia"></label>
 
     <h4>Image:</h4>
-    <input type="text" name="hinh" placeholder="Nhap vao hinh san pham ?">
+    <input type="text" name="hinh" id="hinh"class="Input__Create__Product" placeholder="Nhap vao hinh san pham ?">
+    <label id="hinh--Line" for="hinh"></label>
 
     <h4>Description</h4>
-    <input type="text" name="noidung" placeholder="Nhap vao noi dung san pham ?">
+    <input type="text" name="noidung" id="noidung" class="Input__Create__Product" placeholder="Nhap vao noi dung san pham ?">
+    <label id="noidung--Line" for="noidung"></label>
 
     <button type="submit" class="btn text-dark update">Save</button>
     </form>

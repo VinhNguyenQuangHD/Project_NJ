@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/detail__Product.css">
     <title>View production</title>
 </head>
 <body>
     <form id="update_prod" method="post">
-        <h1><%= prod.idsanpham %></h1>
-        <img src="<%= prod.hinh %>" alt="hinh anh">
-        <h3><%= prod.tensp %></h3>
-        <h4><%= prod.idsanpham %></h4>
-        <h5><%= prod.dongia %></h5>
-
+        <div class="IMG__PRoduce">
+            <img src="<%= prod.hinh %>" alt="hinh anh">
+        </div>
+        <div class="Content1__Produce">
+            <p>Tên món: <%= prod.tensp %></p>
+            <p>Mã món: <%= prod.idsanpham %></p>
+            <p>Đơn giá: <%= prod.dongia %></p>
+        </div>
         <br>
-        <h4>Noi dung mon an</h4>
-        <span><%= prod.noidung %></span>
+        <div class="Content__detail">
+            <h4>Noi dung mon an</h4>
+            <p class="material__Produce">
+                Nội dung: <%= prod.noidung %>
+            </p>
+        </div>
     </form>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>

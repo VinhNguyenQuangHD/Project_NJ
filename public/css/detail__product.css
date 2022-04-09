@@ -1,0 +1,12 @@
+body {display: flex;width: 100%;margin: 0px;height: 100vh;justify-content: center;}
+
+form#update_prod {position: relative;display: flex;width: 51%;}
+
+.IMG__PRoduce {margin-top: 10%;width: 50%;height: 40%;}
+
+.IMG__PRoduce img {width: 100%;height: 100%;}
+
+.Content1__Produce {margin-top: 10%;margin-left: 10%;font-size: 22px;}
+.Content__detail {top: 50%;position: absolute;width: 100%;}
+
+h4 {font-size: 25px;}
