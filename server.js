@@ -11,6 +11,7 @@ const user_routes = require('./routes/user.routes');
 const bcrypt = require("bcryptjs");
 const morgan = require("morgan");
 const web_rtc = require('wrtc');
+const path = require("path");
 
 
 const {
@@ -143,6 +144,7 @@ app.get("/live-stream", (req,res) =>{
   res.render("livestream");
 })
 app.get("/viewer-side", (req,res) =>{
+  //res.sendFile(path.join(__dirname+ "viewer_screne"));
   res.render("viewer_screne");
 })
 
@@ -185,7 +187,20 @@ app.post('/broadcast', async ({ body }, res) => {
   }
 
   res.json(payload);
+
+  //Chat giua nhung nguoi xem voi nhau
+//Chua chat duoc
+io.on('connection', function(socket) {
+  console.log("Chat jointed")
+
+  socket.on('send', function(data) {
+    io.emit('send')
+  })
+})
 });
+
+
+
 
 function handleTrackEvent(e, peer) {
   senderStream = e.streams[0];

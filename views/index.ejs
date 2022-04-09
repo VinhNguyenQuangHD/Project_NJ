@@ -1133,13 +1133,13 @@ label.Bar__scroll {
                     Best Produce
                 </div>
                 <div class="Content__Review">
+                    
                     <div data-aos="fade-right" class="Content1__Produce">
-                        <form action="/" method="post">
-                            <% for(var i = 0; i < prop.length; i++) { %>
-                                <input type="hidden" >
+                        <form action="/" method="post" class="Content1__Produce">
+                            <% for(var i = 0; i < prod.length; i++) { %>
                         <div class="Produce__Content1">
                             <div class="Background__Content1">
-                                <a href="/production/view-production?id=<%= prod[i]._id %>" class="see__Detail">
+                                <a href="/view-production?id=<%= prod[i]._id %>" class="see__Detail">
                                     Xem chi tiet
                                 </a>
                             </div>
@@ -1157,61 +1157,8 @@ label.Bar__scroll {
                         </div>
                         <% } %>
                         </form>
-                        <div class="Produce__Content1">
-                            <div class="Background__Content1">
-                                <a href="" class="see__Detail">
-                                    Xem chi tiet
-                                </a>
-                            </div>
-                            <div class="Inf__Produce__Content1">
-                                <div class="Name__Produce__Content1">
-                                    Nàng Monalisa
-                                </div>
-                                <div class="Date__PushProduce__Content1">
-                                    15/12/2021
-                                </div>
-                                <div class="Writter__Produce__Content1">
-                                    John Cena
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Produce__Content1">
-                            <div class="Background__Content1">
-                                <a href="" class="see__Detail">
-                                    Xem chi tiet
-                                </a>
-                            </div>
-                            <div class="Inf__Produce__Content1">
-                                <div class="Name__Produce__Content1">
-                                    Nàng Monalisa
-                                </div>
-                                <div class="Date__PushProduce__Content1">
-                                    15/12/2021
-                                </div>
-                                <div class="Writter__Produce__Content1">
-                                    John Cena
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Produce__Content1">
-                            <div class="Background__Content1">
-                                <a href="" class="see__Detail">
-                                    Xem chi tiet
-                                </a>
-                            </div>
-                            <div class="Inf__Produce__Content1">
-                                <div class="Name__Produce__Content1">
-                                    Nàng Monalisa
-                                </div>
-                                <div class="Date__PushProduce__Content1">
-                                    15/12/2021
-                                </div>
-                                <div class="Writter__Produce__Content1">
-                                    John Cena
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    
                     <div data-aos="zoom-in" class="Title__Content1">
                         <div class="Text1__Content1">
                             Top Produce trending

@@ -7,6 +7,43 @@
     <title>View production</title>
 </head>
 <body>
-    <h1><%= prods._id %></h1>
+    <form id="update_prod" method="post">
+        <h1><%= prod.idsanpham %></h1>
+        <img src="<%= prod.hinh %>" alt="hinh anh">
+        <h3><%= prod.tensp %></h3>
+        <h4><%= prod.idsanpham %></h4>
+        <h5><%= prod.dongia %></h5>
+
+        <br>
+        <h4>Noi dung mon an</h4>
+        <span><%= prod.noidung %></span>
+    </form>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script>
+            //thong bao cap nhat user thanh cong
+            $("#update_prod").submit(function(event){
+                event.preventDefault();
+
+                var unindexed_array = $(this).serializeArray();
+                var data = {}
+
+                $.map(unindexed_array, function(n, i){
+                    data[n['name']] = n['value']
+                })
+
+
+                var request = {
+                    "url" : `http://localhost:8080/api/production/${data.id}`,
+                    "method" : "PUT",
+                    "data" : data
+                }
+
+                $.ajax(request).done(function(response){
+                    alert("Data Updated Successfully!");
+                })
+
+            })
+        </script>
 </body>
 </html>

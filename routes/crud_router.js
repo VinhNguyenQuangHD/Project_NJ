@@ -147,19 +147,18 @@ routes.get('/production' , (req,res) =>{
     res.render("production");
 })
 
-routes.get('/production/view-production', (res,req) =>{
-    axios.get('http://localhost:8080/api/productions',{ params: {id: req.query.id}}).then(function(prod){
-        res.render('production_view',{prods: prod.data});
+routes.get('/view-production', (req,res) =>{
+    axios.get('http://localhost:8080/api/production', { params: {id: req.query.id}}).then(function(proddata){
+        res.render('production_view',{prod: proddata.data});
     }).catch(err => {
         res.send(err);
     })
-})
+});
 
 
 routes.post('/api/production', controller4.create_new_production);
 routes.get('/api/production',controller4.read_all_production);
 routes.put('/api/production/:id', controller4.update_current_production);
-routes.put('/api/productions/:id', controller4.find_curent_id);
 routes.delete('/api/production/:id', controller4.delete_current_production);
 
 module.exports = routes;

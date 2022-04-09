@@ -5,11 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viewer</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src='viewer.js'></script>  
+    <script src='viewer.js'></script>
+    <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
+    <script src="chat.js"></script>
+    <style>
+
+    </style>
 </head>
 <body>
     <h1>Viewer</h1>
     <video autoplay id='video'></video>
     <button id="my-button">View Stream</button>
+
+    <fieldset>
+        <input type="text" id="username" name="username" placeholder="Enter viewer name">
+        <br>
+        <div id="content"></div>
+    
+        <input id="message" placeholder="Send message">
+        <br>
+        <button id="sendMessage">SEND</button>
+    </fieldset>
+    
 </body>
 </html>

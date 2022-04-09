@@ -45,12 +45,13 @@ exports.update_current_production = (req,res) =>{
     if(!req.body){
         res.status(404).send({message: "Khong the load form !!!"});
     }else{
-        const id = req.params.id;
+        const id = req.param.id;
         production.findByIdAndUpdate(id,req.body,{useFindAndModify: false} ).then(data =>{
             if(!data){
                 res.status(404).send({message: "Form phai co thuoc tinh thay doi !!!"});
             }else{
                 res.send(data);
+                res.redirect("/");
             }
         }).catch(err =>{
             res.status(500).send({message: err.message || "Khong the cap nhat form"});
@@ -68,16 +69,5 @@ exports.delete_current_production = (req,res) =>{
             }
         }).catch(err =>{
             res.status(500).send({message: err.message || "Khong the xoa du lieu"});
-        })
-}
-
-exports.find_curent_id = (req,res) =>{
-    const prodct_id = req.params.id;
-        production.findById(prodct_id,req.body,{useFindAndModify: false} ).then(data =>{
-            if(!data){
-                res.status(404).send({message: "Da co loi xay ra"});
-            }else{
-                res.send(data);
-            }
         })
 }

@@ -72,3 +72,16 @@ exports.topic_delete = (req,res) =>{
             res.status(500).send({message : err.message || "Co loi xay ra"});
         });
 }
+
+var MongoDb = require('mongodb')
+var mongodb_url = "mongodb://0.0.0.0:27017/";
+
+exports.findProductionByTopicID = (req,res) =>{
+    const idsanpham = req.param.idsanpham;
+    MongoDb.connect(mongodb_url,function(err,db){
+        if (err) throw error;
+        var data = db.db("auth");
+        data.collection("san_phams").find({}, {projection: {_id:0  ,idsanpham:idsanpham} })
+    })
+
+}
